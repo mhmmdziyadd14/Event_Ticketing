@@ -1,11 +1,9 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -13,11 +11,11 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('description');
-            $table->date('Tanggal Event');
-            $table->integer('organizer_id');
-            $table->integer('venue_id');
+            $table->string('nama');
+            $table->string('deskripsi');
+            $table->date('tanggal');
+            $table->foreignId('organizer_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('venue_id')->constrained('venues')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
