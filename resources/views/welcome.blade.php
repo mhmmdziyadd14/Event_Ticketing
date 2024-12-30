@@ -5,20 +5,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Responsive Design</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        .card-bg {
+            background-color: #343a40;
+            min-height: 300px;
+            color: white;
+            position: relative;
+        }
+
+        .card-overlay {
+            position: absolute;
+            bottom: 0;
+            padding: 15px;
+            background-color: rgba(0, 0, 0, 0.5);
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="bi bi-ticket-perforated"></i> TICKETER</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav me-auto">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
@@ -29,172 +49,69 @@
                         <a class="nav-link" href="#">Pricing</a>
                     </li>
                 </ul>
-                <div class="button">
-                    @if (Route::has('login'))
-                    <nav class="-mx-3 flex flex-1 justify-end">
-                        @auth
-                        <a
-                            href="{{ url('/dashboard') }}"
-                            class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
-                            Dashboard
-                        </a>
-                        @else
-                        <a
-                            href="{{ route('login') }}"
-                            class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
-                            Log in
-                        </a>
-
-                        @if (Route::has('register'))
-                        <a
-                            href="{{ route('register') }}"
-                            class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
-                            Register
-                        </a>
-                        @endif
-                        @endauth
-                    </nav>
-                    @endif
+                <div class="d-flex">
+                    <a href="#" class="btn btn-outline-primary me-2">Log in</a>
+                    <a href="#" class="btn btn-primary">Register</a>
                 </div>
             </div>
         </div>
     </nav>
 
-</body>
-<div class="container my-5">
-    <!-- Footer -->
-    <footer
-        class="text-center text-lg-start text-white"
-        style="background-color: #45526e">
-        <!-- Grid container -->
-        <div class="container p-4 pb-0">
-            <!-- Section: Links -->
-            <section class="">
-                <!--Grid row-->
-                <div class="row">
-                    <!-- Grid column -->
-                    <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-                        <h6 class="text-uppercase mb-4 font-weight-bold">
-                            Company name
-                        </h6>
-                        <p>
-                            Here you can use rows and columns to organize your footer
-                            content. Lorem ipsum dolor sit amet, consectetur adipisicing
-                            elit.
-                        </p>
-                    </div>
-                    <!-- Grid column -->
-
-                    <hr class="w-100 clearfix d-md-none" />
-
-                    <!-- Grid column -->
-                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-                        <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
-                        <p>
-                            <a class="text-white">MDBootstrap</a>
-                        </p>
-                        <p>
-                            <a class="text-white">MDWordPress</a>
-                        </p>
-                        <p>
-                            <a class="text-white">BrandFlow</a>
-                        </p>
-                        <p>
-                            <a class="text-white">Bootstrap Angular</a>
-                        </p>
-                    </div>
-                    <!-- Grid column -->
-
-                    <hr class="w-100 clearfix d-md-none" />
-
-                    <!-- Grid column -->
-                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-                        <h6 class="text-uppercase mb-4 font-weight-bold">
-                            Useful links
-                        </h6>
-                        <p>
-                            <a class="text-white">Your Account</a>
-                        </p>
-                        <p>
-                            <a class="text-white">Become an Affiliate</a>
-                        </p>
-                        <p>
-                            <a class="text-white">Shipping Rates</a>
-                        </p>
-                        <p>
-                            <a class="text-white">Help</a>
-                        </p>
-                    </div>
-
-                    <!-- Grid column -->
-                    <hr class="w-100 clearfix d-md-none" />
-
-                    <!-- Grid column -->
-                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-                        <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
-                        <p><i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
-                        <p><i class="fas fa-envelope mr-3"></i> info@gmail.com</p>
-                        <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
-                        <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
-                    </div>
-                    <!-- Grid column -->
-                </div>
-                <!--Grid row-->
-            </section>
-            <!-- Section: Links -->
-
-            <hr class="my-3">
-
-            <!-- Section: Copyright -->
-            <section class="p-3 pt-0">
-                <div class="row d-flex align-items-center">
-                    <!-- Grid column -->
-                    <div class="col-md-7 col-lg-8 text-center text-md-start">
-                        <!-- Copyright -->
-                        <div class="p-3">
-                            © 2020 Copyright:
-                            <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
-                        </div>
-                        <!-- Copyright -->
-                    </div>
-                    <!-- Grid column -->
-
-                    <!-- Grid column -->
-                    <div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
-                        <!-- Facebook -->
-                        <a
-                            class="btn btn-outline-light btn-floating m-1"
-                            class="text-white"
-                            role="button"><i class="fab fa-facebook-f"></i></a>
-
-                        <!-- Twitter -->
-                        <a
-                            class="btn btn-outline-light btn-floating m-1"
-                            class="text-white"
-                            role="button"><i class="fab fa-twitter"></i></a>
-
-                        <!-- Google -->
-                        <a
-                            class="btn btn-outline-light btn-floating m-1"
-                            class="text-white"
-                            role="button"><i class="fab fa-google"></i></a>
-
-                        <!-- Instagram -->
-                        <a
-                            class="btn btn-outline-light btn-floating m-1"
-                            class="text-white"
-                            role="button"><i class="fab fa-instagram"></i></a>
-                    </div>
-                    <!-- Grid column -->
-                </div>
-            </section>
-            <!-- Section: Copyright -->
+    <!-- Kartu -->
+    <div class="container mt-5">
+        <div class="card card-bg">
+            <div class="card-overlay">
+                <h5 class="card-title">Card Title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                    content.</p>
+                <p class="card-text"><small>Last updated 3 mins ago</small></p>
+            </div>
         </div>
-        <!-- Grid container -->
-    </footer>
-    <!-- Footer -->
-</div>
+    </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Footer -->
+    <footer class="text-center text-lg-start text-white mt-5" style="background-color: #45526e;">
+        <div class="container p-4">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 mb-4">
+                    <h6 class="text-uppercase font-weight-bold">Company name</h6>
+                    <p>Providing amazing services with modern design principles.</p>
+                </div>
+                <div class="col-sm-6 col-md-3 mb-4">
+                    <h6 class="text-uppercase font-weight-bold">Products</h6>
+                    <ul class="list-unstyled">
+                        <li><a class="text-white" href="#">MDBootstrap</a></li>
+                        <li><a class="text-white" href="#">MDWordPress</a></li>
+                        <li><a class="text-white" href="#">BrandFlow</a></li>
+                        <li><a class="text-white" href="#">Bootstrap Angular</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-6 col-md-3 mb-4">
+                    <h6 class="text-uppercase font-weight-bold">Useful links</h6>
+                    <ul class="list-unstyled">
+                        <li><a class="text-white" href="#">Your Account</a></li>
+                        <li><a class="text-white" href="#">Affiliate Program</a></li>
+                        <li><a class="text-white" href="#">Shipping Rates</a></li>
+                        <li><a class="text-white" href="#">Help</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-12 col-md-3 mb-4">
+                    <h6 class="text-uppercase font-weight-bold">Contact</h6>
+                    <p><i class="bi bi-house-door-fill"></i> New York, NY 10012, US</p>
+                    <p><i class="bi bi-envelope-fill"></i> info@example.com</p>
+                    <p><i class="bi bi-telephone-fill"></i> +1 234 567 89</p>
+                    <p><i class="bi bi-printer-fill"></i> +1 234 567 90</p>
+                </div>
+            </div>
+        </div>
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2024 Copyright: <a class="text-white" href="#">YourWebsite.com</a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+</body>
 
 </html>
