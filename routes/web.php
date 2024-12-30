@@ -22,9 +22,9 @@ Route::get('admin', function(){
     return '<h1>hello admin</h1>';
 })->middleware(['auth', 'verified','role:admin']);
 
-Route::get('eoAdmin', function(){
-    return '<h1>hello eoAdmin</h1>';
-})->middleware(['auth', 'verified','role:eoAdmin|admin']);
+Route::get('organizer', function(){
+    return '<h1>hello organizer</h1>';
+})->middleware(['auth', 'verified','role:organizer|admin']);
 
 Route::get('event', function(){
     return view('event');
