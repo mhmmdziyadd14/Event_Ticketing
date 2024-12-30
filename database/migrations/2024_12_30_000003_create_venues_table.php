@@ -1,11 +1,9 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -13,9 +11,10 @@ return new class extends Migration
     {
         Schema::create('venues', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('nama');
+            $table->integer('kapasitas');
             $table->text('alamat');
-            $table->string('link alamat');
+            $table->string('link_alamat');
             $table->text('deskripsi')->nullable();
             $table->timestamps();
         });
