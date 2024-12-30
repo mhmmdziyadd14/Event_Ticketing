@@ -12,10 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('transaksis', function (Blueprint $table) {
-            $table->id(); // Kolom ID sebagai primary key
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); // Relasi ke tabel users
-            $table->foreignId('event_id')->constrained('events')->onDelete('cascade'); // Relasi ke tabel events
-            $table->timestamps(); // Kolom created_at dan updated_at
+            $table->id(); 
+            $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade'); 
+            $table->foreignId('event_id')->constrained('events')->onUpdate('cascade')->onDelete('cascade'); 
+            $table->decimal('grand_total', 8, 2); 
+            $table->enum('status', ['pending', 'completed', 'failed']); 
+            $table->timestamps();
         });
     }
     

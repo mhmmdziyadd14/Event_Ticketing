@@ -11,22 +11,19 @@ return new class extends Migration
      */
     public function up(): void
 {
-    Schema::create('tickets', function (Blueprint $table) {
+    Schema::create('genres', function (Blueprint $table) {
         $table->id();
-        $table->string('nama_tiket'); // Column for ticket name
-        $table->decimal('harga', 10, 2); // Column for ticket price, with two decimal places
-        $table->string('venue'); // Column for the venue
-        $table->string('kategori'); // Column for ticket category
+        $table->string('nama'); // Column for genre/category name
+        $table->text('deskripsi'); // Column for description of the genre/category
         $table->timestamps(); // Created at and Updated at timestamps
     });
 }
-
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('tickets');
+        Schema::dropIfExists('genres');
     }
 };

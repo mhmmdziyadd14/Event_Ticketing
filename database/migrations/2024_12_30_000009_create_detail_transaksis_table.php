@@ -13,12 +13,13 @@ return new class extends Migration
 {
     Schema::create('detail__transaksis', function (Blueprint $table) {
         $table->id();
-        $table->foreignId('tiket_id')->constrained('tikets')->onDelete('cascade');
-        $table->foreignId('transaksi_id')->constrained('transaksis')->onDelete('cascade');
+        $table->foreignId('tiket_id')->constrained('tickets')->onUpdate('cascade')->onDelete('cascade');
+        $table->foreignId('transaksi_id')->constrained('transaksis')->onUpdate('cascade')->onDelete('cascade');
+        $table->integer('quantity'); 
+        $table->decimal('subtotal', 8, 2); 
         $table->timestamps();
     });
 }
-
 
     /**
      * Reverse the migrations.
