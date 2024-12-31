@@ -16,7 +16,8 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade'); 
             $table->foreignId('event_id')->constrained('events')->onUpdate('cascade')->onDelete('cascade'); 
             $table->decimal('grand_total', 8, 2); 
-            $table->enum('status', ['pending', 'completed', 'failed']); 
+            $table->enum('status', ['pending', 'completed', 'failed', 'cancelled'])->default('pending');
+            $table->text('cancellation_reason')->nullable(); // Alasan pembatalan transaksi
             $table->timestamps();
         });
     }

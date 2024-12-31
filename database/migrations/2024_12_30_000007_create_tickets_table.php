@@ -12,9 +12,11 @@ return new class extends Migration {
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_tiket');
+            $table->string('nama');
             $table->decimal('harga', 10, 2);
             $table->foreignId('event_id')->constrained('events')->onUpdate('cascade')->onDelete('cascade');
+            $table->integer('stok');
+            $table->enum('type',['reguler','vip','vvip']);
             $table->enum('status',['tersedia','habis']);
             $table->timestamps();
         });
