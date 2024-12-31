@@ -1,9 +1,11 @@
 <?php
-
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Event;
+use App\Models\Transaksi;
+use App\Models\Detail_Transaksi;
+use App\Models\Ticket; // Impor model Ticket
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
@@ -13,20 +15,31 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::truncate();
-        //
-        $admin = User::create([
-            'name' => 'Admin',  
-            'email' => 'admin@example.com',
-            'password' => bcrypt('password')
-        ]);
-        $admin->assignRole('admin');
+        User::query()->delete();
 
-        $EoAdmin = User::create([
-            'name' => 'EoAdmin',  
-            'email' => 'EoAdmin@example.com',
-            'password' => bcrypt('password')
-        ]);
-        $EoAdmin->assignRole('eoAdmin');
+        // Daftar peran yang akan dibuat
+        $roleDistribution = [
+            'admin' => 1,
+            'organizer' => 5,
+            'user' => 5
+        ];
+
+        // Buat pengguna untuk setiap peran
+        foreach ($roleDistribution as $role => $count) {
+            // Pengguna admin dibuat secara manual
+            if ($role === 'admin') {
+                $admin = User::create([
+                    'name' => 'Admin',
+                    'email' => 'admin@example.com',
+                    'password' => bcrypt('password')
+                ]);
+                $admin->assignRole($role);
+            } else {
+                // Pengguna lain dibuat menggunakan factory
+                User::factory()->count($count)->create()->each(function ($user) use ($role) {
+                    $user->assignRole($role);
+                });
+            }
+        }
     }
 }

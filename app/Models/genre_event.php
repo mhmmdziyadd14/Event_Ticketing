@@ -5,16 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class ticket extends Model
+class genre_event extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'nama',
-        'harga',
         'event_id',
-        'stok',
-        'type',
-        'status',
+        'genre_id',
     ];
 
     // Relasi Many-to-One dengan Event
@@ -22,4 +18,11 @@ class ticket extends Model
     {
         return $this->belongsTo(Event::class);
     }
+
+    // Relasi Many-to-One dengan Genre
+    public function genre()
+    {
+        return $this->belongsTo(Genre::class);
+    }
 }
+

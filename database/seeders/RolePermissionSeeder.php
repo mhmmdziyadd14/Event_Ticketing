@@ -26,10 +26,10 @@ class RolePermissionSeeder extends Seeder
         Permission::Create(['name' => 'view-event']);
     
         $roleAdmin = Role::Create(['name' => 'admin']);
-        $roleEoAdmin = Role::Create(['name' => 'eoAdmin']);
+        $roleOrganizer = Role::Create(['name' => 'organizer']);
         $roleUser  = Role::Create(['name' => 'user']);
     
         $roleAdmin->givePermissionTo(['add-users', 'edit-users', 'delete-users', 'view-users']);
-        $roleEoAdmin->givePermissionTo(['add-event', 'edit-event', 'delete-event', 'view-event']);
+        $roleOrganizer->givePermissionTo(['add-event', 'edit-event', 'delete-event', 'view-event']);
     }
 }
