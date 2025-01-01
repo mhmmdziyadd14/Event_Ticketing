@@ -19,11 +19,11 @@ Route::middleware('auth')->group(function () {
 
 
 Route::get('admin', function(){
-    return '<h1>hello admin</h1>';
+    return view('dashboard');
 })->middleware(['auth', 'verified','role:admin']);
 
 Route::get('organizer', function(){
-    return view('dashboard_organizer');
+    return view('dashboard');
 })->middleware(['auth', 'verified','role:organizer|admin']);
 
 Route::get('event', function(){
