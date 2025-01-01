@@ -23,7 +23,7 @@ Route::get('admin', function(){
 })->middleware(['auth', 'verified','role:admin']);
 
 Route::get('organizer', function(){
-    return '<h1>hello organizer</h1>';
+    return view('dashboard_organizer');
 })->middleware(['auth', 'verified','role:organizer|admin']);
 
 Route::get('event', function(){
