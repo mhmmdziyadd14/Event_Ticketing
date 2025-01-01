@@ -6,7 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Spatie\Permission\Traits\HasRoles; 
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
@@ -45,5 +45,18 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+
+    }
+
+    // Relasi dengan Transaksi
+    public function transactions()
+    {
+        return $this->hasMany(Transaksi::class, 'user_id'); // Misalnya, user_id adalah foreign key
+    }
+
+    // Relasi dengan Event
+    public function events()
+    {
+        return $this->hasMany(Event::class, 'organizer_id'); // Misalnya, organizer_id adalah foreign key
     }
 }

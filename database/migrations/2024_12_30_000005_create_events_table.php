@@ -12,7 +12,7 @@ return new class extends Migration {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('deskripsi');
+            $table->text('deskripsi');
             $table->date('tanggal');
             $table->foreignId('organizer_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('venue_id')->constrained('venues')->onUpdate('cascade')->onDelete('cascade');
