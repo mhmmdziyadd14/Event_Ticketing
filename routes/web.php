@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use Filament\Facades\Filament;
 
 Route::get('/', function () {
     return view('welcome');
@@ -18,9 +19,6 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::get('admin', function(){
-    return view('dashboard');
-})->middleware(['auth', 'verified','role:admin']);
 
 Route::get('organizer', function(){
     return view('dashboard');
