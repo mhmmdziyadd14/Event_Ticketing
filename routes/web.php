@@ -26,7 +26,7 @@ Route::get('organizer', function(){
 
 Route::get('event', function(){
     return view('event');
-})->middleware(['auth', 'verified','role_or_permission:view-event|admin']);
+})->middleware(['auth', 'verified','role:user']);
 
 require __DIR__.'/auth.php';
 

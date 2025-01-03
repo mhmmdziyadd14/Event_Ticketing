@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\GenreResource\Pages;
-use App\Filament\Resources\GenreResource\RelationManagers;
-use App\Models\Genre;
+use App\Filament\Resources\ArtistResource\Pages;
+use App\Filament\Resources\ArtistResource\RelationManagers;
+use App\Models\Artist;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,9 +13,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class GenreResource extends Resource
+class ArtistResource extends Resource
 {
-    protected static ?string $model = Genre::class;
+    protected static ?string $model = Artist::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -23,9 +23,9 @@ class GenreResource extends Resource
     {
         return $form
             ->schema([
-                //
                 Forms\Components\TextInput::make('nama'),
                 Forms\Components\Textarea::make('deskripsi')
+
             ]);
     }
 
@@ -33,9 +33,9 @@ class GenreResource extends Resource
     {
         return $table
             ->columns([
-                //
                 Tables\Columns\TextColumn::make('nama')->searchable(),
                 Tables\Columns\TextColumn::make('deskripsi')
+
             ])
             ->filters([
                 //
@@ -60,9 +60,9 @@ class GenreResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListGenres::route('/'),
-            'create' => Pages\CreateGenre::route('/create'),
-            'edit' => Pages\EditGenre::route('/{record}/edit'),
+            'index' => Pages\ListArtists::route('/'),
+            'create' => Pages\CreateArtist::route('/create'),
+            'edit' => Pages\EditArtist::route('/{record}/edit'),
         ];
     }
 }

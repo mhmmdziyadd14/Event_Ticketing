@@ -3,23 +3,22 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Genre;
+
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\genre>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\artist>
  */
-class genreFactory extends Factory
+class artistFactory extends Factory
 {
-    protected $model = Genre::class;
     /**
      * Define the model's default state.
      *
      * @return array<string, mixed>
      */
-    public function definition()
+    public function definition(): array
     {
         return [
-            'nama' => $this->faker->word, // Nama genre
+            'nama' =>  fake()->name(), // Nama genre
             'deskripsi' => $this->faker->realText($maxNbChars = 200, $indexSize = 2), // Deskripsi genre
         ];
     }

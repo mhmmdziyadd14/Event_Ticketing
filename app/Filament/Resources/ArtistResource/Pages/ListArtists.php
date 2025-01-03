@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\GenreResource\Pages;
+namespace App\Filament\Resources\ArtistResource\Pages;
 
-use App\Filament\Resources\GenreResource;
+use App\Filament\Resources\ArtistResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
-class ListGenres extends ListRecords
+class ListArtists extends ListRecords
 {
-    protected static string $resource = GenreResource::class;
+    protected static string $resource = ArtistResource::class;
 
     protected function getHeaderActions(): array
     {

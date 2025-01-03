@@ -4,7 +4,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Venue;
-use App\Models\Genre;
+use App\Models\Artist;
 use App\Models\Event;
 use App\Models\Ticket;
 use App\Models\Transaksi;
@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
 
         // Buat venue dan genre
         $venues = Venue::factory()->count(3)->create();
-        $genres = Genre::factory()->count(5)->create();
+        $artists = Artist::factory()->count(5)->create();
 
         // Buat event oleh organizer
         $organizers = User::role('organizer')->get();
@@ -63,9 +63,12 @@ class DatabaseSeeder extends Seeder
             }
         }
 
-        // Hubungkan genre dengan event
+        // Hubungkan artists dengan event
         foreach ($events as $event) {
-            $event->genres()->attach($genres->random(rand(1, 3))->pluck('id')->toArray());
+            // Corrected method name from artist() to artists()
+            $event->artists()->attach(
+                $artists->random(rand(1, min(3, $artists->count())))->pluck('id')->toArray()
+            );
         }
     }
 }
