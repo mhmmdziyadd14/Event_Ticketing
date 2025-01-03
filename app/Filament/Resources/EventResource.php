@@ -8,40 +8,59 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Filament\Forms\Components\Card;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\Section;
+use Filament\Tables\Filters\SelectFilter;
 
 class EventResource extends Resource
 {
     protected static ?string $model = Event::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-calendar-days';
+    protected static ?string $navigationLabel = 'Event';
+    protected static ?string $navigationGroup = 'Manajemen Event';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('nama')
-                    ->required()
-                    ->label('Nama Acara')
-                    ->maxLength(255),
-                
-                Forms\Components\Textarea::make('deskripsi')
-                    ->label('Deskripsi Acara')
-                    ->maxLength(5000),
-                
-                Forms\Components\DateTimePicker::make('tanggal')
-                    ->required()
-                    ->label('Tanggal Acara')
-                    ->minDate(now()), // Pastikan tanggal tidak bisa di masa lalu
-                
-                Forms\Components\Select::make('organizer_id')
-                    ->relationship('organizer', 'name') // Menggunakan relasi untuk memilih penyelenggara
-                    ->required()
-                    ->label('Penyelenggara'),
-                
-                Forms\Components\Select::make('venue_id')
-                    ->relationship('venue', 'nama') // Menggunakan relasi untuk memilih venue
-                    ->required()
-                    ->label('Venue'),
+                Card::make()->schema([
+                    Forms\Components\TextInput::make('nama')
+                        ->required()
+                        ->label('Nama Acara')
+                        ->maxLength(255),
+
+                    Textarea::make('deskripsi')
+                        ->label('Deskripsi Acara')
+                        ->rows(4)
+                        ->maxLength(5000),
+
+                    Forms\Components\DateTimePicker::make('tanggal')
+                        ->required()
+                        ->label('Tanggal Acara')
+                        ->minDate(now()),
+
+                    Forms\Components\Select::make('organizer_id')
+                        ->relationship('organizer', 'name')
+                        ->required()
+                        ->label('Penyelenggara')
+                        ->searchable(),
+
+                    Forms\Components\Select::make('venue_id')
+                        ->relationship('venue', 'nama')
+                        ->required()
+                        ->label('Venue')
+                        ->searchable(),
+
+                    FileUpload::make('poster')
+                        ->label('Poster Event')
+                        ->image()
+                        ->directory('event-posters')
+                        ->visibility('public'),
+
+                ])
             ]);
     }
 
@@ -49,21 +68,51 @@ class EventResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('nama')->searchable()->label('Nama Acara'),
-                Tables\Columns\TextColumn::make('deskripsi')->label('Deskripsi'),
-                Tables\Columns\TextColumn::make('tanggal')->label('Tanggal'),
-                Tables\Columns\BadgeColumn::make('organizer.name')->label('Penyelenggara'), // Menggunakan relasi
-                Tables\Columns\BadgeColumn::make('venue.nama')->label('Venue'), // Menggunakan relasi
+                Tables\Columns\ImageColumn::make('poster')
+                    ->label('Poster')
+                    ->circular(),
+
+                Tables\Columns\TextColumn::make('nama')
+                    ->searchable()
+                    ->label('Nama Acara')
+                    ->sortable(),
+
+                Tables\Columns\TextColumn::make('deskripsi')
+                    ->searchable()
+                    ->label('Deskripsi Acara')
+                    ->sortable(),
+
+                Tables\Columns\TextColumn::make('tanggal')
+                    ->label('Tanggal')
+                    ->dateTime()
+                    ->sortable(),
+
+                Tables\Columns\BadgeColumn::make('organizer.name')
+                    ->label('Penyelenggara')
+                    ->color('primary'),
+
+                Tables\Columns\BadgeColumn::make('venue.nama')
+                    ->label('Venue')
+                    ->color('success'),
             ])
             ->filters([
-                // Tambahkan filter jika diperlukan
+                SelectFilter::make('organizer')
+                    ->relationship('organizer', 'name')
+                    ->label('Filter Penyelenggara'),
+
+                SelectFilter::make('venue')
+                    ->relationship('venue', 'nama')
+                    ->label('Filter Venue'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\ViewAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\RestoreBulkAction::make(),
                 ]),
             ]);
     }
@@ -81,6 +130,7 @@ class EventResource extends Resource
             'index' => Pages\ListEvents::route('/'),
             'create' => Pages\CreateEvent::route('/create'),
             'edit' => Pages\EditEvent::route('/{record}/edit'),
+            'view' => Pages\ViewEvent::route('/{record}'),
         ];
     }
 }

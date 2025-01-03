@@ -1,39 +1,54 @@
 <?php
+
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ArtistEventResource\Pages;
 use App\Models\Artist_Event;
-use App\Models\Event; // Import Event model
-use App\Models\Artist; // Import Artist model
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Filament\Forms\Components\Card;
+use Filament\Tables\Filters\SelectFilter;
 
 class ArtistEventResource extends Resource
 {
     protected static ?string $model = Artist_Event::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
-    // Set the label for the navigation
-    protected static ?string $navigationLabel = 'Event Artist'; // Change this to your desired label
+    protected static ?string $navigationIcon = 'heroicon-o-musical-note';
+    protected static ?string $navigationLabel = 'Artis di Event';
+    protected static ?string $navigationGroup = 'Manajemen Event';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('event_id')
-                    ->relationship('event', 'nama') // Assuming 'event' is the relationship method in Artist_Event model
-                    ->required()
-                    ->label('Event'),
-                
-                Forms\Components\Select::make('artist_id')
-                    ->relationship('artist', 'nama') // Assuming 'artist' is the relationship method in Artist_Event model
-                    ->required()
-                    ->label('Artist'),
-                
+                Card::make()->schema([
+                    Forms\Components\Select::make('event_id')
+                        ->relationship('event', 'nama')
+                        ->required()
+                        ->label('Pilih Event')
+                        ->searchable()
+                        ->preload(),
+                    
+                    Forms\Components\Select::make('artist_id')
+                        ->relationship('artist', 'nama')
+                        ->required()
+                        ->label('Pilih Artis')
+                        ->searchable()
+                        ->preload(),
+                    
+                    // Forms\Components\TimePicker::make('waktu_tampil')
+                    //     ->label('Waktu Tampil')
+                    //     ->nullable(),
+                    
+                    // Forms\Components\TextInput::make('durasi_tampil')
+                    //     ->numeric()
+                    //     ->suffix('menit')
+                    //     ->label('Durasi Tampil')
+                    //     ->nullable()
+                ])
             ]);
     }
 
@@ -41,14 +56,41 @@ class ArtistEventResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\BadgeColumn::make('event.nama')->label('Event'), // Displaying event name
-                Tables\Columns\BadgeColumn::make('artist.nama')->label('Artist'), // Displaying artist name
+                Tables\Columns\TextColumn::make('event.nama')
+                    ->label('Event')
+                    ->badge()
+                    ->color('primary')
+                    ->searchable(),
+
+                Tables\Columns\TextColumn::make('artist.nama')
+                    ->label('Artis')
+                    ->badge()
+                    ->color('success')
+                    ->searchable(),
+
+                // Tables\Columns\TextColumn::make('waktu_tampil')
+                //     ->label('Waktu Tampil')
+                //     ->icon('heroicon-m-clock')
+                //     ->toggleable(isToggledHiddenByDefault: true),
+
+                // Tables\Columns\TextColumn::make('durasi_tampil')
+                //     ->label('Durasi')
+                //     ->suffix(' menit')
+                //     ->toggleable(isToggledHiddenByDefault: true)
             ])
             ->filters([
-                // Add filters if needed
+                SelectFilter::make('event')
+                    ->relationship('event', 'nama')
+                    ->label('Filter Event'),
+
+                SelectFilter::make('artist')
+                    ->relationship('artist', 'nama')
+                    ->label('Filter Artis')
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\ViewAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -60,7 +102,7 @@ class ArtistEventResource extends Resource
     public static function getRelations(): array
     {
         return [
-            // Define any relation managers if needed
+            // Tambahkan relasi jika diperlukan
         ];
     }
 
@@ -70,6 +112,7 @@ class ArtistEventResource extends Resource
             'index' => Pages\ListArtistEvents::route('/'),
             'create' => Pages\CreateArtistEvent::route('/create'),
             'edit' => Pages\EditArtistEvent::route('/{record}/edit'),
+            'view' => Pages\ViewArtistEvent::route('/{record}'),
         ];
     }
 }

@@ -3,11 +3,16 @@
 namespace App\Filament\Resources\ArtistEventResource\Pages;
 
 use App\Filament\Resources\ArtistEventResource;
-use Filament\Actions;
-use Filament\Resources\Pages\CreateRecord;
+use Filament\Resources\Pages\ViewRecord;
 
-class CreateArtistEvent extends CreateRecord
+class ViewArtistEvent extends ViewRecord
 {
     protected static string $resource = ArtistEventResource::class;
-    
+
+    protected function getHeaderActions(): array
+    {
+        return [
+           
+        ];
+    }
 }
