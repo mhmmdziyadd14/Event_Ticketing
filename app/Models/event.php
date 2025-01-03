@@ -22,11 +22,12 @@ class event extends Model
         return $this->hasMany(Ticket::class);
     }
 
-    // Relasi Many-to-Many dengan Genre
-    public function genres()
+    // Many-to-Many relationship with Artists
+    public function artists()
     {
-        return $this->belongsToMany(Genre::class, 'genre_events');
+        return $this->belongsToMany(Artist::class, 'artist_events', 'event_id', 'artist_id');
     }
+
 
     // Relasi Many-to-One dengan Venue
     public function venue()
