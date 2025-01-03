@@ -28,5 +28,9 @@ Route::get('event', function(){
     return view('event');
 })->middleware(['auth', 'verified','role:user']);
 
+Route::get('user', function(){
+    return view('user');
+})->middleware(['auth', 'verified','role:user']);
+
 require __DIR__.'/auth.php';
 
