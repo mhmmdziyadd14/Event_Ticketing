@@ -4,28 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign Up</title>
+    <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <style>
         /* Gaya kustom untuk halaman login */
-        body {
-            background-image: url("https://i.pinimg.com/736x/d2/6a/f4/d26af4e954c30605acbd7d2f486984ed.jpg")
-        }
-    
-        .login-container {
-            max-width: 400px;
-            padding: 2rem;
-            background-color: white;
-            border-radius: 1rem;
-            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease-in-out;
-        }
-    
-        .login-container:hover {
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-            transform: translateY(-5px);
-        }
+
+    body {
+        margin: 0; /* Hilangkan margin default */
+        padding: 0; /* Hilangkan padding default */
+        height: 100vh; /* Pastikan tinggi elemen body mencakup seluruh viewport */
+        background-image: url("https://i.pinimg.com/736x/63/9d/0f/639d0fb393636750349b0f6708fe9712.jpg");
+        background-size: cover; /* Pastikan gambar menutupi seluruh layar */
+        background-repeat: no-repeat; /* Hindari pengulangan gambar */
+        background-position: center; /* Pusatkan gambar */
+    }
+
+    .login-container {
+        max-width: 400px;
+        padding: 2rem;
+        background-color: rgba(255, 255, 255, 0.75); /* Warna putih dengan transparansi ringan (95%) */
+        border-radius: 1rem;
+        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease-in-out;
+    }
+
+    .login-container:hover {
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        transform: translateY(-5px);
+    }
     
         .primary-button {
             background-color: #46498d;
@@ -46,7 +53,7 @@
 <body>
     <div class="d-flex align-items-center justify-content-center min-vh-100 bg-light-blue">
         <div class="login-container">
-            <h2 class="text-2xl font-bold text-center text-gray-700 mb-4">Sign Up</h2>
+            <h2 class="text-2xl font-bold text-center text-gray-700 mb-4">Login</h2>
     
             <!-- Status Sesi -->
             <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -89,7 +96,7 @@
     
     
                     <button type="submit" class="btn btn-primary primary-button">
-                        {{ __('Log in') }}
+                        {{ __('Log In') }}
                     </button>
                 </div>
             </form>
