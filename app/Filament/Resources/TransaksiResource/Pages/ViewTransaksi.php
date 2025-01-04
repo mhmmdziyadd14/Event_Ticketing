@@ -9,4 +9,12 @@ use Filament\Resources\Pages\ViewRecord;
 class ViewTransaksi extends ViewRecord
 {
     protected static string $resource = TransaksiResource::class;
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            Actions\EditAction::make(),
+            Actions\DeleteAction::make(),
+        ];
+    }
 }
