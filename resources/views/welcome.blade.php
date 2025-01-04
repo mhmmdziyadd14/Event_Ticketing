@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Browse &mdash; Free Website Template by Free-Template.co</title>
+    <title>Ticketer</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -52,14 +52,13 @@
                 <div class="row align-items-center">
 
                     <div class="col-11 col-xl-2">
-                        <h1 class="mb-0 site-logo"><a href="index.html" class="text-white h2 mb-0">Browse</a></h1>
+                        <h1 class="mb-0 site-logo"><a href="index.html" class="text-white h2 mb-0">Ticketer</a></h1>
                     </div>
                     <div class="col-12 col-md-10 d-none d-xl-block">
                         <nav class="site-navigation position-relative text-right" role="navigation">
-
                             <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-                                <li class="active"><a href="index.html"><span>Home</span></a></li>
-                                <li class="has-children">
+                                <li style="margin-right: 20px" class="active"><a href="index.html"><span>Home</span></a></li>
+                                <li style="margin-right: 20px" class="has-children">
                                     <a href="about.html"><span>Dropdown</span></a>
                                     <ul class="dropdown arrow-top">
                                         <li><a href="#">Menu One</a></li>
@@ -76,21 +75,19 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a href="listings.html"><span>Listings</span></a></li>
-                                <li><a href="about.html"><span>About</span></a></li>
-                                <li><a href="blog.html"><span>Blog</span></a></li>
-                                <li><a href="contact.html"><span>Contact</span></a></li>
-                            </ul>
-                            @if (Route::has('login'))
+                                <li style="margin-right: 20px"><a href="listings.html"><span>Listings</span></a></li>
+                                <li style="margin-right: 20px"><a href="about.html"><span>About</span></a></li>
+                                @if (Route::has('login'))
                                 @auth
-                                    <a href="{{ url('/dashboard') }}" class="btn btn-outline-dark me-2">Dasbor</a>
+                                    <a href="{{ url('/dashboard') }}" class="btn btn-outline-dark me-2" style="border-radius: 20px">Dasbor</a>
                                 @else
-                                    <a href="{{ route('login') }}" class="btn btn-outline-dark me-2">Masuk</a>
+                                    <a href="{{ route('login') }}" class="btn btn-outline-dark me-2" style="border-radius: 20px">Masuk</a>
                                     @if (Route::has('register'))
-                                        <a href="{{ route('register') }}" class="btn btn-dark">Daftar</a>
+                                        <a href="{{ route('register') }}" class="btn btn-dark" style="border-radius: 20px">Daftar</a>
                                     @endif
-                                @endauth
+                                @endauth 
                             @endif
+                            </ul>
                         </nav>
                     </div>
 
@@ -118,13 +115,12 @@
 
                     <div class="row justify-content-center mb-4">
                         <div class="col-md-10 text-center">
-                            <h1 data-aos="fade-up">Find Nearby <span class="typed-words"></span></h1>
-                            <p data-aos="fade-up" data-aos-delay="100">Handcrafted free templates by <a
-                                    href="https://free-template.co/" target="_blank">Free-Template.co</a></p>
+                            <h1 data-aos="fade-up">KONSER TERMEGAH DI INDONESIA</h1>
+                            <p data-aos="fade-up" data-aos-delay="100">Dapatkan Keseruan Konser terbaru</p>
                         </div>
                     </div>
 
-                    <div class="form-search-wrap p-2" data-aos="fade-up" data-aos-delay="200">
+                    <div class="form-search-wrap p-2" data-aos="fade-up" data-aos-delay="200" style="border-radius: 10px">
                         <form method="post">
                             <div class="row align-items-center">
                                 <div class="col-lg-12 col-xl-4 no-sm-border border-right">
@@ -142,24 +138,18 @@
                                     <div class="select-wrap">
                                         <span class="icon"><span class="icon-keyboard_arrow_down"></span></span>
                                         <select class="form-control" name="" id="">
-                                            <option value="">All Categories</option>
-                                            <option value="">Hotels</option>
-                                            <option value="">Restaurant</option>
-                                            <option value="">Eat &amp; Drink</option>
-                                            <option value="">Events</option>
-                                            <option value="">Fitness</option>
-                                            <option value="">Others</option>
+                                            <option value="">Events 1</option>
+                                            <option value="">Events 2</option>
+                                            <option value="">Events 3</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-xl-2 ml-auto text-right">
-                                    <input type="submit" class="btn text-white btn-primary" value="Search">
+                                    <input type="submit" class="btn text-white" style="background-color: blue" value="Search">
                                 </div>
-
                             </div>
                         </form>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -170,55 +160,38 @@
         <div class="container">
             <div class="row justify-content-center mb-5">
                 <div class="col-md-7 text-center border-primary">
-                    <h2 class="font-weight-light text-primary">Popular Categories</h2>
-                    <p class="color-black-opacity-5">Far far away, behind the word mountains, far from the countries
-                        Vokalia and Consonantia, there live the blind texts.</p>
+                    <h2 class="font-weight-light" style="color: blue">Popular Categories</h2>
+                    <p class="color-black-opacity-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae aliquam nam dicta inventore repellat autem ad culpa maxime saepe excepturi?</p>
                 </div>
             </div>
 
-            <div class="row align-items-stretch">
-                <div class="col-6 col-sm-6 col-md-4 mb-4 mb-lg-0 col-lg-2">
-                    <a href="#" class="popular-category h-100">
-                        <span class="icon mb-3"><span class="flaticon-hotel"></span></span>
-                        <span class="caption mb-2 d-block">Hotels</span>
-                        <span class="number">4,89</span>
-                    </a>
-                </div>
+            <div class="row align-items-stretch justify-content-center">
+                
                 <div class="col-6 col-sm-6 col-md-4 mb-4 mb-lg-0 col-lg-2">
                     <a href="#" class="popular-category h-100">
                         <span class="icon mb-3"><span class="flaticon-microphone"></span></span>
-                        <span class="caption mb-2 d-block">Events</span>
+                        <span class="caption mb-2 d-block">Events 1</span>
                         <span class="number">482</span>
                     </a>
                 </div>
                 <div class="col-6 col-sm-6 col-md-4 mb-4 mb-lg-0 col-lg-2">
                     <a href="#" class="popular-category h-100">
-                        <span class="icon mb-3"><span class="flaticon-flower"></span></span>
-                        <span class="caption mb-2 d-block">Spa</span>
-                        <span class="number">194</span>
+                        <span class="icon mb-3"><span class="flaticon-microphone"></span></span>
+                        <span class="caption mb-2 d-block">Events 2</span>
+                        <span class="number">482</span>
                     </a>
                 </div>
                 <div class="col-6 col-sm-6 col-md-4 mb-4 mb-lg-0 col-lg-2">
                     <a href="#" class="popular-category h-100">
-                        <span class="icon mb-3"><span class="flaticon-restaurant"></span></span>
-                        <span class="caption mb-2 d-block">Stores</span>
-                        <span class="number">1,472</span>
+                        <span class="icon mb-3"><span class="flaticon-microphone"></span></span>
+                        <span class="caption mb-2 d-block">Events 3</span>
+                        <span class="number">482</span>
                     </a>
                 </div>
-                <div class="col-6 col-sm-6 col-md-4 mb-4 mb-lg-0 col-lg-2">
-                    <a href="#" class="popular-category h-100">
-                        <span class="icon mb-3"><span class="flaticon-cutlery"></span></span>
-                        <span class="caption mb-2 d-block">Restaurants</span>
-                        <span class="number">439</span>
-                    </a>
-                </div>
-                <div class="col-6 col-sm-6 col-md-4 mb-4 mb-lg-0 col-lg-2">
-                    <a href="#" class="popular-category h-100">
-                        <span class="icon mb-3"><span class="flaticon-bike"></span></span>
-                        <span class="caption mb-2 d-block">Other</span>
-                        <span class="number">692</span>
-                    </a>
-                </div>
+                
+                
+                
+                
             </div>
 
             <div class="row mt-5 justify-content-center tex-center">
@@ -233,9 +206,8 @@
         <div class="container">
             <div class="row justify-content-center mb-5">
                 <div class="col-md-7 text-center border-primary">
-                    <h2 class="font-weight-light text-primary">Most Visited Places</h2>
-                    <p class="color-black-opacity-5">Far far away, behind the word mountains, far from the countries
-                        Vokalia and Consonantia, there live the blind texts.</p>
+                    <h2 class="font-weight-light" style="color: blue">Most Visited Events</h2>
+                    <p class="color-black-opacity-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, esse!</p>
                 </div>
             </div>
 
@@ -244,7 +216,7 @@
 
                     <div class="listing-item">
                         <div class="listing-image">
-                            <img src="images/img_1.jpg" alt="Free Website Template by Free-Template.co"
+                            <img src="images/img_1.jpg" alt="#"
                                 class="img-fluid">
                         </div>
                         <div class="listing-item-content">
@@ -261,7 +233,7 @@
 
                     <div class="listing-item">
                         <div class="listing-image">
-                            <img src="images/img_2.jpg" alt="Free Website Template by Free-Template.co"
+                            <img src="images/img_2.jpg" alt="#"
                                 class="img-fluid">
                         </div>
                         <div class="listing-item-content">
@@ -277,7 +249,7 @@
 
                     <div class="listing-item">
                         <div class="listing-image">
-                            <img src="images/img_3.jpg" alt="Free Website Template by Free-Template.co"
+                            <img src="images/img_3.jpg" alt="#"
                                 class="img-fluid">
                         </div>
                         <div class="listing-item-content">
@@ -294,7 +266,7 @@
 
                     <div class="listing-item">
                         <div class="listing-image">
-                            <img src="images/img_4.jpg" alt="Free Website Template by Free-Template.co"
+                            <img src="images/img_4.jpg" alt="#"
                                 class="img-fluid">
                         </div>
                         <div class="listing-item-content">
@@ -311,7 +283,7 @@
 
                     <div class="listing-item">
                         <div class="listing-image">
-                            <img src="images/img_5.jpg" alt="Free Website Template by Free-Template.co"
+                            <img src="images/img_5.jpg" alt="#"
                                 class="img-fluid">
                         </div>
                         <div class="listing-item-content">
@@ -327,7 +299,7 @@
 
                     <div class="listing-item">
                         <div class="listing-image">
-                            <img src="images/img_6.jpg" alt="Free Website Template by Free-Template.co"
+                            <img src="images/img_6.jpg" alt="#"
                                 class="img-fluid">
                         </div>
                         <div class="listing-item-content">
@@ -351,24 +323,20 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 mb-5">
-                    <img src="images/img_1.jpg" alt="Free Website Template by Free-Template.co"
+                    <img src="images/img_1.jpg" alt="#"
                         class="img-fluid rounded">
                 </div>
                 <div class="col-md-5 ml-auto">
-                    <h2 class="text-primary mb-3">Why Us</h2>
+                    <h2 class="mb-3" style="color: blue">Why Us</h2>
                     <div class="row mt-4">
                         <div class="col-12">
                             <div class="border p-3 rounded mb-2">
                                 <a data-toggle="collapse" href="#collapse-1" role="button" aria-expanded="false"
-                                    aria-controls="collapse-1" class="accordion-item h5 d-block mb-0">How to list my
-                                    item?</a>
+                                    aria-controls="collapse-1" class="accordion-item h5 d-block mb-0">how to register ?</a>
 
                                 <div class="collapse" id="collapse-1">
                                     <div class="pt-2">
-                                        <p class="mb-0">Far far away, behind the word mountains, far from the
-                                            countries Vokalia and Consonantia, there live the blind texts. Separated
-                                            they live in Bookmarksgrove right at the coast of the Semantics, a large
-                                            language ocean.</p>
+                                        <p class="mb-0">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Hic, odio iste eum officia sed id ducimus dolore dolorem. Asperiores, praesentium.</p>
                                     </div>
                                 </div>
                             </div>
@@ -427,7 +395,7 @@
         <div class="container">
             <div class="row justify-content-center mb-5">
                 <div class="col-md-7 text-center border-primary">
-                    <h2 class="font-weight-light text-primary">How It Works</h2>
+                    <h2 class="font-weight-light" style="color: blue">How It Works</h2>
                     <p class="color-black-opacity-5">Far far away, behind the word mountains, far from the countries
                         Vokalia and Consonantia, there live the blind texts. </p>
                 </div>
@@ -437,7 +405,7 @@
                 <div class="col-md-6 mb-4 mb-lg-0 col-lg-4">
                     <div class="how-it-work-step">
                         <div class="img-wrap">
-                            <img src="images/step-1.svg" alt="Free website template by Free-Template.co"
+                            <img src="images/step-1.svg" alt="#"
                                 class="img-fluid">
                         </div>
                         <span class="number">1</span>
@@ -449,7 +417,7 @@
                 <div class="col-md-6 mb-4 mb-lg-0 col-lg-4">
                     <div class="how-it-work-step">
                         <div class="img-wrap">
-                            <img src="images/step-2.svg" alt="Free website template by Free-Template.co"
+                            <img src="images/step-2.svg" alt="#"
                                 class="img-fluid">
                         </div>
                         <span class="number">2</span>
@@ -461,7 +429,7 @@
                 <div class="col-md-6 mb-4 mb-lg-0 col-lg-4">
                     <div class="how-it-work-step">
                         <div class="img-wrap">
-                            <img src="images/step-3.svg" alt="Free website template by Free-Template.co"
+                            <img src="images/step-3.svg" alt="#"
                                 class="img-fluid">
                         </div>
                         <span class="number">3</span>
@@ -479,7 +447,7 @@
 
             <div class="row justify-content-center mb-5">
                 <div class="col-md-7 text-center border-primary">
-                    <h2 class="font-weight-light text-primary">Satisfied Customers</h2>
+                    <h2 class="font-weight-light" style="color: blue">Satisfied Customers</h2>
                 </div>
             </div>
 
@@ -487,7 +455,7 @@
                 <div>
                     <div class="testimonial">
                         <figure class="mb-4">
-                            <img src="images/person_3_sq.jpg" alt="Free Website Template by Free-Template.co"
+                            <img src="images/person_3_sq.jpg" alt="#"
                                 class="img-fluid mb-3">
                             <p>Willie Smith</p>
                         </figure>
@@ -501,7 +469,7 @@
                 <div>
                     <div class="testimonial">
                         <figure class="mb-4">
-                            <img src="images/person_2_sq.jpg" alt="Free Website Template by Free-Template.co"
+                            <img src="images/person_2_sq.jpg" alt="#"
                                 class="img-fluid mb-3">
                             <p>Robert Jones</p>
                         </figure>
@@ -516,7 +484,7 @@
                 <div>
                     <div class="testimonial">
                         <figure class="mb-4">
-                            <img src="images/person_4_sq.jpg" alt="Free Website Template by Free-Template.co"
+                            <img src="images/person_4_sq.jpg" alt="#"
                                 class="img-fluid mb-3">
                             <p>Peter Richmond</p>
                         </figure>
@@ -531,7 +499,7 @@
                 <div>
                     <div class="testimonial">
                         <figure class="mb-4">
-                            <img src="images/person_5_sq.jpg" alt="Free Website Template by Free-Template.co"
+                            <img src="images/person_5_sq.jpg" alt="#"
                                 class="img-fluid mb-3">
                             <p>Bruce Rogers</p>
                         </figure>
@@ -554,18 +522,18 @@
         <div class="container">
             <div class="row justify-content-center mb-5">
                 <div class="col-md-7 text-center border-primary">
-                    <h2 class="font-weight-light text-primary">Tips &amp; Articles</h2>
+                    <h2 class="font-weight-light" style="color: blue">Tips &amp; Articles</h2>
                     <p class="color-black-opacity-5">See Our Daily tips &amp; articles</p>
                 </div>
             </div>
             <div class="row mb-3 align-items-stretch">
                 <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
                     <div class="h-entry">
-                        <img src="images/img_1.jpg" alt="Free Website Template by Free-Template.co"
+                        <img src="images/img_1.jpg" alt="#"
                             class="img-fluid">
                         <div class="h-entry-inner">
-                            <h2 class="font-size-regular"><a href="#">Etiquette tips for travellers</a></h2>
-                            <div class="meta mb-4">by <a href="#">Jeff Sheldon</a> <span
+                            <h2 class="font-size-regular" style="color: blue">Etiquette tips for travellers</h2>
+                            <div class="meta mb-4" style="color: blue">by Jeff Sheldon<span
                                     class="mx-2">&bullet;</span> May 5th, 2019</div>
                             <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
                                 there live the blind texts. </p>
@@ -574,11 +542,11 @@
                 </div>
                 <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
                     <div class="h-entry">
-                        <img src="images/img_2.jpg" alt="Free Website Template by Free-Template.co"
+                        <img src="images/img_2.jpg" alt="#"
                             class="img-fluid">
                         <div class="h-entry-inner">
-                            <h2 class="font-size-regular"><a href="#">Etiquette tips for travellers</a></h2>
-                            <div class="meta mb-4">by <a href="#">Jeff Sheldon</a> <span
+                            <h2 class="font-size-regular" style="color: blue">Etiquette tips for travellers</h2>
+                            <div class="meta mb-4" style="color: blue">by Jeff Sheldon<span
                                     class="mx-2">&bullet;</span> May 5th, 2019</div>
                             <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
                                 there live the blind texts. </p>
@@ -587,11 +555,11 @@
                 </div>
                 <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
                     <div class="h-entry">
-                        <img src="images/img_3.jpg" alt="Free Website Template by Free-Template.co"
+                        <img src="images/img_3.jpg" alt="#"
                             class="img-fluid">
                         <div class="h-entry-inner">
-                            <h2 class="font-size-regular"><a href="#">Etiquette tips for travellers</a></h2>
-                            <div class="meta mb-4">by <a href="#">Jeff Sheldon</a> <span
+                            <h2 class="font-size-regular" style="color: blue">Etiquette tips for travellers</h2>
+                            <div class="meta mb-4" style="color: blue">by Jeff Sheldon<span
                                     class="mx-2">&bullet;</span> May 5th, 2019</div>
                             <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
                                 there live the blind texts. </p>
@@ -603,7 +571,7 @@
     </div>
 
 
-    <div class="py-5 bg-primary">
+    <div class="py-5" style="background-color: blue">
         <div class="container">
             <div class="row">
                 <div class="col-lg-7 mr-auto mb-4 mb-lg-0">
@@ -611,9 +579,9 @@
                     <p class="mb-0 text-white">Far far away, behind the word mountains, far from the countries Vokalia
                         and Consonantia, there live the blind texts.</p>
                 </div>
-                <div class="col-lg-4">
-                    <p class="mb-0"><a href="signup.html"
-                            class="btn btn-outline-white text-white btn-md px-5 font-weight-bold btn-md-block">Sign
+                <div class="col-lg-4 ">
+                    <p class="mb-0" ><a href="signup.html"
+                            class="btn btn-outline-white btn-md px-5 font-weight-bold btn-md-block text-white">Sign
                             Up</a></p>
                 </div>
             </div>
@@ -670,7 +638,7 @@
                             <input type="text" class="form-control bg-transparent" placeholder="Enter Email"
                                 aria-label="Enter Email" aria-describedby="button-addon2">
                             <div class="input-group-append">
-                                <button class="btn btn-primary text-white" type="button"
+                                <button class="btn text-white" style="background-color: blue" type="button"
                                     id="button-addon2">Send</button>
                             </div>
                         </div>
@@ -681,9 +649,7 @@
                 <div class="col-12 text-md-center text-left">
                     <p>
                         <!-- Link back to Free-Template.co can't be removed. Template is licensed under CC BY 3.0. -->
-                        &copy; 2019 <strong class="text-black">Browse</strong> Free Template. All Rights Reserved. <br>
-                        Design by <a href="https://free-template.co/" target="_blank"
-                            class="text-black">Free-Template.co</a>
+                        &copy; 2019 <strong class="text-black">Browse</strong> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur, quis! 
                     </p>
                 </div>
             </div>
