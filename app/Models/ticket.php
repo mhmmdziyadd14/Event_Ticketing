@@ -13,6 +13,7 @@ class ticket extends Model
         'harga',
         'event_id',
         'stok',
+        'stok',
         'type',
         'status',
     ];

@@ -32,5 +32,13 @@ Route::get('user', function(){
     return view('user');
 })->middleware(['auth', 'verified','role:user']);
 
+Route::get('transaction', function(){
+    return view('transaction');
+})->middleware(['auth', 'verified','role:user']);
+
+Route::get('organizer', function(){
+    return view('organizer');
+})->middleware(['auth', 'verified','role:organizer']);
+
 require __DIR__.'/auth.php';
 
