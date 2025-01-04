@@ -9,4 +9,12 @@ use Filament\Resources\Pages\ViewRecord;
 class ViewVenue extends ViewRecord
 {
     protected static string $resource = VenueResource::class;
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            Actions\EditAction::make(),
+            Actions\DeleteAction::make(),
+        ];
+    }
 }
