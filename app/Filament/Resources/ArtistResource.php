@@ -38,9 +38,9 @@ class ArtistResource extends Resource
 
                     FileUpload::make('foto')
                         ->label('Foto Profil')
-                        ->image()
-                        ->directory('artist-photos')
+                        ->disk('public')
                         ->visibility('public')
+                        ->directory('image')
                         ->nullable(),
 
                     Forms\Components\TextInput::make('genre')
