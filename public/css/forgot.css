@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-image: url("https://i.pinimg.com/736x/63/9d/0f/639d0fb393636750349b0f6708fe9712.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.reset-container {
+    max-width: 400px;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: 1rem;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.reset-container:hover {
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+.primary-button {
+    background-color: #46498d;
+    color: rgb(249, 249, 250);
+    border: none;
+    padding: 0.80rem 2rem;
+    border-radius: 50px;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    width: 100%;
+}
+
+.primary-button:hover {
+    background-color: #1E3A8A;
+    transform: scale(1.05);
+}
