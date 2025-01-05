@@ -286,13 +286,10 @@
 
                                 <div class="collapse" id="collapse-1">
                                     <div class="pt-2">
-                                        <p class="mb-0">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                                            Hic, odio iste eum officia sed id ducimus dolore dolorem. Asperiores,
-                                            praesentium.</p>
+                                        <p class="mb-0">To purchase concert tickets, you must have an account first. Click the "Register" button at the top of the page, fill in your personal information, and complete the registration process. Once your account is registered, you can log in and start purchasing tickets.</p>
                                     </div>
                                 </div>
                             </div>
-
                             <div class="border p-3 rounded mb-2">
                                 <a data-toggle="collapse" href="#collapse-4" role="button" aria-expanded="false"
                                     aria-controls="collapse-4" class="accordion-item h5 d-block mb-0">Is this
@@ -300,9 +297,7 @@
 
                                 <div class="collapse" id="collapse-4">
                                     <div class="pt-2">
-                                        <p class="mb-0">A small river named Duden flows by their place and supplies
-                                            it with the necessary regelialia. It is a paradisematic country, in which
-                                            roasted parts of sentences fly into your mouth.</p>
+                                        <p class="mb-0">Yes, our service is available for users in various countries. As long as you have internet access and a supported payment method, you can purchase concert tickets anytime.</p>
                                     </div>
                                 </div>
                             </div>
@@ -313,10 +308,7 @@
 
                                 <div class="collapse" id="collapse-2">
                                     <div class="pt-2">
-                                        <p class="mb-0">Even the all-powerful Pointing has no control about the blind
-                                            texts it is an almost unorthographic life One day however a small line of
-                                            blind text by the name of Lorem Ipsum decided to leave for the far World of
-                                            Grammar.</p>
+                                        <p class="mb-0">Registering an account on our platform is free. However, concert tickets you purchase will have prices based on the selected concert. Occasionally, we also offer discounts or exciting promos for registered users.</p>
                                     </div>
                                 </div>
                             </div>
@@ -328,15 +320,11 @@
 
                                 <div class="collapse" id="collapse-3">
                                     <div class="pt-2">
-                                        <p class="mb-0">The Big Oxmox advised her not to do so, because there were
-                                            thousands of bad Commas, wild Question Marks and devious Semikoli, but the
-                                            Little Blind Text didn’t listen. She packed her seven versalia, put her
-                                            initial into the belt and made herself on the way.</p>
+                                        <p class="mb-0">Our system is designed to provide a fast and easy experience. After selecting your favorite concert, choose the ticket category, complete the payment, and the e-ticket will be sent directly to your email.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -347,12 +335,10 @@
         <div class="container">
             <div class="row justify-content-center mb-5">
                 <div class="col-md-7 text-center border-primary">
-                    <h2 class="font-weight-light" style="color: blue">How It Works</h2>
-                    <p class="color-black-opacity-5">Far far away, behind the word mountains, far from the countries
-                        Vokalia and Consonantia, there live the blind texts. </p>
+                    <h2 class="font-weight-light" style="color: blue">How Does It Works</h2>
+                    <p class="color-black-opacity-5">With our platform, you can purchase tickets for your favorite concerts easily and quickly. From selecting events, adding tickets to the cart, to completing the payment in just a few simple steps. Enjoy a hassle-free ticket booking experience and receive your e-ticket directly via email. </p>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-md-6 mb-4 mb-lg-0 col-lg-4">
                     <div class="how-it-work-step">
@@ -361,9 +347,8 @@
                                 alt="#" class="img-fluid">
                         </div>
                         <span class="number">1</span>
-                        <h3>Decide What To Do</h3>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                            there live the blind texts.</p>
+                        <h3>Decide Which Event to Attend</h3>
+                        <p>Browse through the list of concerts or events on our platform. Select your favorite event based on your preferred date and location.</p>
                     </div>
                 </div>
                 <div class="col-md-6 mb-4 mb-lg-0 col-lg-4">
@@ -373,9 +358,8 @@
                                 alt="#" class="img-fluid">
                         </div>
                         <span class="number">2</span>
-                        <h3>Find What You Want</h3>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                            there live the blind texts.</p>
+                        <h3>Add Tickets to Your Cart</h3>
+                        <p>Once you've chosen your preferred ticket category, add the tickets to your shopping cart. Review your selection before proceeding.</p>
                     </div>
                 </div>
                 <div class="col-md-6 mb-4 mb-lg-0 col-lg-4">
@@ -385,9 +369,8 @@
                                 alt="#" class="img-fluid">
                         </div>
                         <span class="number">3</span>
-                        <h3>Explore Amazing Places</h3>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                            there live the blind texts.</p>
+                        <h3>Checkout and Get Your Tickets</h3>
+                        <p>Complete the checkout process using the available payment methods. Upon successful payment, your e-ticket will be sent directly to your email.</p>
                     </div>
                 </div>
             </div>
@@ -412,9 +395,7 @@
                             <p>Willie Smith</p>
                         </figure>
                         <blockquote>
-                            <p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and
-                                Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at
-                                the coast of the Semantics, a large language ocean.&rdquo;</p>
+                            <p>&ldquo;The ticket purchasing process through this platform was incredibly satisfying. It was not only fast and practical but also ensured secure transactions. The tickets were sent directly to my email just a few minutes after payment. The concert I attended was absolutely amazing, from crystal-clear sound systems to spectacular lighting and a mesmerizing atmosphere. This was truly an unforgettable experience!&rdquo;</p>
                         </blockquote>
                     </div>
                 </div>
@@ -426,9 +407,7 @@
                             <p>Robert Jones</p>
                         </figure>
                         <blockquote>
-                            <p>&ldquo;A small river named Duden flows by their place and supplies it with the necessary
-                                regelialia. It is a paradisematic country, in which roasted parts of sentences fly into
-                                your mouth.&rdquo;</p>
+                            <p>&ldquo;I was really impressed by the variety of events available on this platform. There’s a wide selection of concerts, from local to international performances. Buying tickets was so easy, even for a beginner. When I attended my chosen concert, everything was perfect! The artists performed with incredible energy, and the venue was very well-organized. Truly an outstanding experience.&rdquo;</p>
                         </blockquote>
                     </div>
                 </div>
@@ -441,9 +420,7 @@
                             <p>Peter Richmond</p>
                         </figure>
                         <blockquote>
-                            <p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an
-                                almost unorthographic life One day however a small line of blind text by the name of
-                                Lorem Ipsum decided to leave for the far World of Grammar.&rdquo;</p>
+                            <p>&ldquo;This platform is the perfect solution for concert ticket purchases. The system is very intuitive and responsive. On top of that, I felt very secure when making payments. The event I attended was exactly as I had hoped. The atmosphere was fantastic, from the beginning to the end of the event. I will definitely use this platform again for future events!&rdquo;</p>
                         </blockquote>
                     </div>
                 </div>
@@ -456,10 +433,7 @@
                             <p>Bruce Rogers</p>
                         </figure>
                         <blockquote>
-                            <p>&ldquo;The Big Oxmox advised her not to do so, because there were thousands of bad
-                                Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t
-                                listen. She packed her seven versalia, put her initial into the belt and made herself on
-                                the way.&rdquo;</p>
+                            <p>&ldquo;The platform’s user-friendly design helped me find my favorite concert effortlessly. The payment process was also quick and secure. During the concert, I was genuinely amazed by the organizer's professionalism. From ticket arrangements, venue security, to the artists' performances—everything was perfect. This is by far the best concert experience I’ve ever had.&rdquo;</p>
                         </blockquote>
                     </div>
                 </div>
@@ -474,8 +448,8 @@
         <div class="container">
             <div class="row justify-content-center mb-5">
                 <div class="col-md-7 text-center border-primary">
-                    <h2 class="font-weight-light" style="color: blue">Tips &amp; Articles</h2>
-                    <p class="color-black-opacity-5">See Our Daily tips &amp; articles</p>
+                    <h2 class="font-weight-light" style="color: blue"> Articles</h2>
+                    <p class="color-black-opacity-5">See Our articles</p>
                 </div>
             </div>
             <div class="row mb-3 align-items-stretch">
@@ -484,11 +458,10 @@
                         <img src="https://i.pinimg.com/736x/0b/72/d0/0b72d0e3563d27314e9764a70ae64e4a.jpg"
                             alt="#" class="img-fluid">
                         <div class="h-entry-inner">
-                            <h2 class="font-size-regular" style="color: blue">Etiquette tips for travellers</h2>
-                            <div class="meta mb-4" style="color: blue">by Jeff Sheldon<span
+                            <h2 class="font-size-regular" style="color: blue">Tips for Music Lovers and Travelers</h2>
+                            <div class="meta mb-4" style="color: blue">by BLACKPINK<span
                                     class="mx-2">&bullet;</span> May 5th, 2019</div>
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                                there live the blind texts. </p>
+                            <p>After their concert in Jakarta, BLACKPINK expressed deep gratitude to their fans. Jennie, one of the members, said, "We are so happy to be back in Jakarta and feel the incredible energy from BLINKs here. Thank you for your amazing support. We will keep doing our best for you." Lisa added, "We feel so blessed to experience such great love from the fans in Jakarta." </p>
                         </div>
                     </div>
                 </div>
@@ -497,11 +470,10 @@
                         <img src="https://i.pinimg.com/736x/a9/63/b0/a963b03a956411a18282cf0b5f56c917.jpg"
                             alt="#" class="img-fluid">
                         <div class="h-entry-inner">
-                            <h2 class="font-size-regular" style="color: blue">Etiquette tips for travellers</h2>
-                            <div class="meta mb-4" style="color: blue">by Jeff Sheldon<span
-                                    class="mx-2">&bullet;</span> May 5th, 2019</div>
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                                there live the blind texts. </p>
+                            <h2 class="font-size-regular" style="color: blue">Tips for Music Lovers and Travelers</h2>
+                            <div class="meta mb-4" style="color: blue">by Dewa 19<span
+                                    class="mx-2">&bullet;</span> Oct 4th, 2023</div>
+                            <p>Ahmad Dhani, the lead vocalist of Dewa 19, expressed his pride and gratitude after their Jakarta concert. "We are so touched by how many people came to watch us. It’s been an amazing journey, and we feel very fortunate to share our music with all of you," he said. He also added, "Jakarta always has a special place in our hearts, and we can’t wait to come back." </p>
                         </div>
                     </div>
                 </div>
@@ -510,12 +482,10 @@
                         <img src="https://i.pinimg.com/736x/2d/86/cf/2d86cf088eeb46f2ef478802b7aa9d5a.jpg"
                             alt="#" class="img-fluid">
                         <div class="h-entry-inner">
-                            <h2 class="font-size-regular" style="color: blue">Etiquette tips for travellers</h2>
-                            <div class="meta mb-4" style="color: blue">by Jeff Sheldon<span
-                                    class="mx-2">&bullet;</span> May 5th, 2019</div>
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                                there live the blind texts. </p>
-                        </div>
+                            <h2 class="font-size-regular" style="color: blue">Tips for Music Lovers and Travelers</h2>
+                            <div class="meta mb-4" style="color: blue">by Coldplay<span
+                                    class="mx-2">&bullet;</span> june 3th, 2024</div>
+                            <p>Chris Martin, the lead singer of Coldplay, shared his joy after the concert in Jakarta. "Indonesia, you are incredible! We feel so blessed to perform here. The energy you gave us made this concert so special," he said with enthusiasm. He also added, "We always feel so warmly welcomed here, and that makes us want to come back again and again."
                     </div>
                 </div>
             </div>
