@@ -147,33 +147,33 @@ class EventController extends Controller
     {
         $query = Event::with(['tickets', 'venue', 'artists'])
             ->where('tanggal', '>=', now());
-
+    
         // Venue filter
         if ($request->filled('venue_id')) {
             $query->where('venue_id', $request->venue_id);
         }
-
+    
         // Artist filter
         if ($request->filled('artist_id')) {
             $query->whereHas('artists', function ($q) use ($request) {
                 $q->where('artists.id', $request->artist_id);
             });
         }
-
+    
         // Search filter
         if ($request->filled('search')) {
             $query->where(function ($q) use ($request) {
                 $q->where('nama', 'like', '%' . $request->search . '%')
-                    ->orWhere('deskripsi', 'like', '%' . $request->search . '%');
+                  ->orWhere('deskripsi', 'like', '%' . $request->search . '%');
             });
         }
-
+    
         $events = $query->latest()->paginate(9);
-
+    
         // Fetch venues and artists for filtering
         $venues = Venue::all();
         $artists = Artist::all();
-
+    
         return view('user', [
             'events' => $events,
             'venues' => $venues,

@@ -31,7 +31,8 @@
                             <option value="">All Venues</option>
                             @foreach ($venues as $venue)
                                 <option value="{{ $venue->id }}"
-                                    {{ request('venue_id') == $venue->id ? 'selected' : '' }}>{{ $venue->nama }}
+                                    {{ request('venue_id') == $venue->id ? 'selected' : '' }}>
+                                    {{ $venue->nama }}
                                 </option>
                             @endforeach
                         </select>
@@ -82,15 +83,17 @@
                         @endif
                     </div>
 
-
                     <!-- Events Grid -->
                     <div class="grid grid-cols-3 gap-4">
                         @forelse($events as $event)
                             <div class="bg-white dark:bg-gray-700 rounded-lg shadow-md overflow-hidden event-card"
                                 data-event-id="{{ $event->id }}">
                                 @if ($event->foto)
-                                    <img src="{{ Storage::url($event->foto) }}" alt="{{ $event->nama }}"
-                                        class="w-full h-48 object-cover"style="max-height: 600px; max-width: 600px;">
+                                    <div class="w-full h-48 flex items-center justify-center overflow-hidden">
+                                        <img src="{{ Storage::url($event->foto) }}" alt="{{ $event->nama }}"
+                                            class="w-full h-full object-cover object-center"
+                                            style="max-height: 400px; object-fit: cover;">
+                                    </div>
                                 @else
                                     <div
                                         class="w-full h-48 bg-gray-200 dark:bg-gray-600 flex items-center justify-center">
@@ -142,7 +145,7 @@
                                     <!-- Ticket Section -->
                                     <div class="space-y-2">
                                         @foreach ($event->tickets as $ticket)
-                                            <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3 border border-gray-200 dark:border-gray-600 
+                                            <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3 border border-gray-200 dark:border-gray-600
                                             {{ $ticket->stok <= 0 ? 'opacity-50' : '' }}"
                                                 data-ticket-type="{{ $ticket->type }}"
                                                 data-ticket-status="{{ $ticket->status }}">
@@ -165,7 +168,7 @@
                                                     <div class="flex items-center space-x-2">
                                                         @if ($ticket->stok > 0)
                                                             <button
-                                                                class="decrease-ticket bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-md px-2 py-1 
+                                                                class="decrease-ticket bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-md px-2 py-1
                                                             {{ $ticket->stok <= 0 ? 'cursor-not-allowed opacity-50' : '' }}"
                                                                 data-ticket-id="{{ $ticket->id }}"
                                                                 data-event-id="{{ $event->id }}"
@@ -260,208 +263,218 @@
         </div>
     </div>
 
-        <!-- Overlay for modal -->
-        <div id="transaction-modal-overlay" class="fixed inset-0 z-40 hidden bg-black opacity-25"></div>
+    <!-- Overlay for modal -->
+    <div id="transaction-modal-overlay" class="fixed inset-0 z-40 hidden bg-black opacity-25"></div>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const cart = {
-                    items: {},
-                    eventId: null,
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cart = {
+                items: {},
+                eventId: null,
 
-                    addItem(ticketId, eventId, name, price, stock) {
-                        // Prevent adding tickets from different events
-                        if (!this.eventId) {
-                            this.eventId = eventId;
-                        } else if (this.eventId !== eventId) {
-                            this.showErrorModal('You can only purchase tickets for one event at a time.');
-                            return;
-                        }
+                addItem(ticketId, eventId, name, price, stock) {
+                    // Prevent adding tickets from different events
+                    if (!this.eventId) {
+                        this.eventId = eventId;
+                    } else if (this.eventId !== eventId) {
+                        this.showErrorModal('You can only purchase tickets for one event at a time.');
+                        return;
+                    }
 
-                        // Add or update ticket in cart
-                        if (!this.items[ticketId]) {
-                            this.items[ticketId] = {
-                                name,
-                                price,
-                                quantity: 1,
-                                stock: stock,
-                                eventId: eventId
-                            };
+                    // Add or update ticket in cart
+                    if (!this.items[ticketId]) {
+                        this.items[ticketId] = {
+                            name,
+                            price,
+                            quantity: 1,
+                            stock: stock,
+                            eventId: eventId
+                        };
+                    } else {
+                        // Check stock before increasing quantity
+                        if (this.items[ticketId].quantity < stock) {
+                            this.items[ticketId].quantity++;
                         } else {
-                            // Check stock before increasing quantity
-                            if (this.items[ticketId].quantity < stock) {
-                                this.items[ticketId].quantity++;
-                            } else {
-                                this.showErrorModal(`Maximum available tickets: ${stock}`);
-                            }
+                            this.showErrorModal(`Maximum available tickets: ${stock}`);
                         }
-                        this.updateCart();
-                    },
+                    }
+                    this.updateCart();
+                },
 
-                    removeItem(ticketId) {
-                        if (this.items[ticketId]) {
-                            this.items[ticketId].quantity--;
+                removeItem(ticketId) {
+                    if (this.items[ticketId]) {
+                        this.items[ticketId].quantity--;
 
-                            // Remove item if quantity becomes 0
-                            if (this.items[ticketId].quantity <= 0) {
-                                delete this.items[ticketId];
-                            }
+                        // Remove item if quantity becomes 0
+                        if (this.items[ticketId].quantity <= 0) {
+                            delete this.items[ticketId];
                         }
-                        this.updateCart();
-                    },
+                    }
+                    this.updateCart();
+                },
 
-                    updateCart() {
-                        // Calculate total price
-                        const total = Object.values(this.items).reduce((sum, item) =>
-                            sum + (item.price * item.quantity), 0);
+                updateCart() {
+                    // Calculate total price
+                    const total = Object.values(this.items).reduce((sum, item) =>
+                        sum + (item.price * item.quantity), 0);
 
-                        // Get cart elements
-                        const cartItemsEl = document.getElementById('cart-items');
-                        const cartTotalEl = document.getElementById('cart-total');
-                        const checkoutBtn = document.getElementById('checkout-btn');
+                    // Get cart elements
+                    const cartItemsEl = document.getElementById('cart-items');
+                    const cartTotalEl = document.getElementById('cart-total');
+                    const checkoutBtn = document.getElementById('checkout-btn');
 
-                        // Validate elements exist
-                        if (!cartItemsEl || !cartTotalEl || !checkoutBtn) {
-                            console.error('Cart elements not found');
-                            return;
-                        }
+                    // Validate elements exist
+                    if (!cartItemsEl || !cartTotalEl || !checkoutBtn) {
+                        console.error('Cart elements not found');
+                        return;
+                    }
 
-                        // Clear previous cart items
-                        cartItemsEl.innerHTML = '';
+                    // Clear previous cart items
+                    cartItemsEl.innerHTML = '';
 
-                        // Handle empty cart
-                        if (Object.keys(this.items).length === 0) {
-                            cartItemsEl.innerHTML = '<p>Your cart is empty</p>';
-                            checkoutBtn.disabled = true;
-                            this.eventId = null;
-                        } else {
-                            checkoutBtn.disabled = false;
+                    // Handle empty cart
+                    if (Object.keys(this.items).length === 0) {
+                        cartItemsEl.innerHTML = '<p>Your cart is empty</p>';
+                        checkoutBtn.disabled = true;
+                        this.eventId = null;
+                    } else {
+                        checkoutBtn.disabled = false;
 
-                            // Render cart items
-                            Object.entries(this.items).forEach(([ticketId, item]) => {
-                                const itemEl = document.createElement('div');
-                                itemEl.className = 'cart-item flex justify-between';
-                                itemEl.innerHTML = `
+                        // Render cart items
+                        Object.entries(this.items).forEach(([ticketId, item]) => {
+                            const itemEl = document.createElement('div');
+                            itemEl.className = 'cart-item flex justify-between';
+                            itemEl.innerHTML = `
                                     <span>${item.name}</span>
                                     <span>IDR ${item.price.toLocaleString()} x ${item.quantity}</span>
                                 `;
-                                cartItemsEl.appendChild(itemEl);
-                            });
-                        }
+                            cartItemsEl.appendChild(itemEl);
+                        });
+                    }
 
-                        // Update total price display
-                        cartTotalEl.innerText = `IDR ${total.toLocaleString()}`;
-                    },
+                    // Update total price display
+                    cartTotalEl.innerText = `IDR ${total.toLocaleString()}`;
+                },
 
-                    checkout() {
-                        // Validate cart is not empty
-                        if (Object.keys(this.items).length === 0) {
-                            this.showErrorModal('Your cart is empty');
-                            return;
-                        }
+                checkout() {
+                    // Validate cart is not empty
+                    if (Object.keys(this.items).length === 0) {
+                        this.showErrorModal('Your cart is empty');
+                        return;
+                    }
 
-                        // Ensure event ID is set
-                        if (!this.eventId) {
-                            this.showErrorModal('Please select tickets for an event first.');
-                            return;
-                        }
+                    // Ensure event ID is set
+                    if (!this.eventId) {
+                        this.showErrorModal('Please select tickets for an event first.');
+                        return;
+                    }
 
-                        // Prepare tickets for checkout
-                        const tickets = Object.entries(this.items).map(([ticketId, item]) => ({
-                            id: ticketId,
-                            quantity: item.quantity
-                        }));
+                    // Prepare tickets for checkout
+                    const tickets = Object.entries(this.items).map(([ticketId, item]) => ({
+                        id: ticketId,
+                        quantity: item.quantity
+                    }));
 
-                        // Disable checkout button during transaction
-                        const checkoutBtn = document.getElementById('checkout-btn');
-                        checkoutBtn.disabled = true;
-                        checkoutBtn.textContent = 'Processing...';
+                    // Disable checkout button during transaction
+                    const checkoutBtn = document.getElementById('checkout-btn');
+                    checkoutBtn.disabled = true;
+                    checkoutBtn.textContent = 'Processing...';
 
-                        // Get CSRF token from the meta tag
-                        const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute(
+                    // Get CSRF token from the meta tag
+                    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute(
                         'content');
 
-                        // Perform checkout
-                        fetch('{{ route('transactions.store') }}', {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json',
-                                    'X-Requested-With': 'XMLHttpRequest',
-                                    'X-CSRF-TOKEN': csrfToken || ''
-                                },
-                                credentials: 'same-origin',
-                                body: JSON.stringify({
-                                    event_id: this.eventId,
-                                    tickets: tickets
-                                })
+                    // Perform checkout
+                    fetch('{{ route('transactions.store') }}', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-Requested-With': 'XMLHttpRequest',
+                                'X-CSRF-TOKEN': csrfToken || ''
+                            },
+                            credentials: 'same-origin',
+                            body: JSON.stringify({
+                                event_id: this.eventId,
+                                tickets: tickets
                             })
-                            .then(response => {
-                                // Log the response status for debugging
-                                console.log('Response Status:', response.status);
+                        })
+                        .then(response => {
+                            // Log the response status for debugging
+                            console.log('Response Status:', response.status);
 
-                                // Check if the response body is empty
-                                const contentType = response.headers.get('content-type');
-                                if (!contentType || !contentType.includes('application/json')) {
-                                    throw new Error('Unexpected response type');
+                            // Check if the response body is empty
+                            const contentType = response.headers.get('content-type');
+                            if (!contentType || !contentType.includes('application/json')) {
+                                throw new Error('Unexpected response type');
+                            }
+
+                            // Try to parse JSON, with error handling
+                            return response.json().then(data => {
+                                if (response.status !== 200 && response.status !== 201) {
+                                    // Handle error responses
+                                    throw new Error(data.message ||
+                                        'An error occurred during the transaction.');
                                 }
-
-                                // Try to parse JSON, with error handling
-                                return response.json().then(data => {
-                                    if (response.status !== 200 && response.status !== 201) {
-                                        // Handle error responses
-                                        throw new Error(data.message ||
-                                            'An error occurred during the transaction.');
-                                    }
-                                    return data;
-                                });
-                            })
-                            .then(data => {
-                                // Re-enable checkout button
-                                checkoutBtn.disabled = false;
-                                checkoutBtn.textContent = 'Checkout';
-
-                                if (data.status === 'success') {
-                                    // Show success modal
-                                    this.showTransactionSuccessModal(data.transaction_id);
-
-                                    // Clear cart
-                                    this.items = {};
-                                    this.eventId = null;
-                                    this.updateCart();
-                                } else {
-                                    // Show error modal
-                                    this.showErrorModal(data.error || 'Transaction failed');
-                                }
-                            })
-                            .catch(error => {
-                                console.error('Checkout Error:', error);
-
-                                // Re-enable checkout button
-                                checkoutBtn.disabled = false;
-                                checkoutBtn.textContent = 'Checkout';
-
-                                // More detailed error handling
-                                this.showErrorModal(error.message || 'Transaction failed');
+                                return data;
                             });
-                    },
+                        })
+                        .then(data => {
+                            // Re-enable checkout button
+                            checkoutBtn.disabled = false;
+                            checkoutBtn.textContent = 'Checkout';
 
-                    showTransactionSuccessModal(transactionId) {
-                        const modal = document.getElementById('transaction-success-modal');
-                        const overlay = document.getElementById('transaction-modal-overlay');
-                        const transactionIdDisplay = document.getElementById('transaction-id-display');
+                            if (data.status === 'success') {
+                                // Show success modal
+                                this.showTransactionSuccessModal(data.transaction_id);
 
-                        // Set transaction ID
-                        transactionIdDisplay.textContent = transactionId;
+                                // Clear cart
+                                this.items = {};
+                                this.eventId = null;
+                                this.updateCart();
+                            } else {
+                                // Show error modal
+                                this.showErrorModal(data.error || 'Transaction failed');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Checkout Error:', error);
 
-                        // Show modal and overlay
-                        modal.classList.remove('hidden');
-                        modal.classList.add('flex');
-                        overlay.classList.remove('hidden');
-                    },
+                            // Re-enable checkout button
+                            checkoutBtn.disabled = false;
+                            checkoutBtn.textContent = 'Checkout';
 
-                    showErrorModal(message) {
-                        const errorModal = document.createElement('div');
-                        errorModal.innerHTML = `
+                            // More detailed error handling
+                            this.showErrorModal(error.message || 'Transaction failed');
+                        });
+                },
+
+                showTransactionSuccessModal(transactionId) {
+                    const modal = document.getElementById('transaction-success-modal');
+                    const overlay = document.getElementById('transaction-modal-overlay');
+                    const transactionIdDisplay = document.getElementById('transaction-id-display');
+
+                    // Set transaction ID
+                    transactionIdDisplay.textContent = transactionId;
+
+                    // Show modal and overlay
+                    modal.classList.remove('hidden');
+                    modal.classList.add('flex');
+                    overlay.classList.remove('hidden');
+                },
+
+                hideTransactionSuccessModal() {
+                    const modal = document.getElementById('transaction-success-modal');
+                    const overlay = document.getElementById('transaction-modal-overlay');
+
+                    // Hide modal and overlay
+                    modal.classList.add('hidden');
+                    modal.classList.remove('flex');
+                    overlay.classList.add('hidden');
+                },
+
+                showErrorModal(message) {
+                    const errorModal = document.createElement('div');
+                    errorModal.innerHTML = `
                             <div class="fixed inset-0 z-50 flex items-center justify-center">
                                 <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-6 max-w-sm w-full">
                                     <div class="flex flex-col items-center">
@@ -476,55 +489,68 @@
                                 </div>
                             </div>
                         `;
-                        document.body.appendChild(errorModal);
+                    document.body.appendChild(errorModal);
 
-                        const closeErrorModal = errorModal.querySelector('#close-error-modal');
-                        closeErrorModal.addEventListener('click', () => {
-                            document.body.removeChild(errorModal);
-                        });
+                    const closeErrorModal = errorModal.querySelector('#close-error-modal');
+                    closeErrorModal.addEventListener('click', () => {
+                        document.body.removeChild(errorModal);
+                    });
+                }
+            };
+
+            // Unified Event Listener
+            document.addEventListener('click', function(event) {
+                const target = event.target;
+
+                // Increase Ticket Quantity
+                if (target.classList.contains('increase-ticket')) {
+                    const ticketId = target.dataset.ticketId;
+                    const eventId = target.dataset.eventId;
+                    const ticketName = target.dataset.ticketName;
+                    const ticketPrice = parseFloat(target.dataset.ticketPrice);
+                    const ticketStock = parseInt(target.dataset.ticketStock);
+
+                    if (!eventId) {
+                        alert('Unable to determine event. Please try again.');
+                        return;
                     }
-                };
+                    cart.addItem(ticketId, eventId, ticketName, ticketPrice, ticketStock);
+                    updateTicketDisplay(ticketId);
+                }
 
-                // Event listeners for ticket actions
-                document.addEventListener('click', function(event) {
-                    if (event.target.classList.contains('increase-ticket')) {
-                        const ticketId = event.target.dataset.ticketId;
-                        const eventId = event.target.dataset.eventId;
-                        const ticketName = event.target.dataset.ticketName;
-                        const ticketPrice = parseFloat(event.target.dataset.ticketPrice);
-                        const ticketStock = parseInt(event.target.dataset.ticketStock);
+                // Decrease Ticket Quantity
+                if (target.classList.contains('decrease-ticket')) {
+                    const ticketId = target.dataset.ticketId;
+                    cart.removeItem(ticketId);
+                    updateTicketDisplay(ticketId);
+                }
 
-                        if (!eventId) {
-                            alert('Unable to determine event. Please try again.');
-                            return;
-                        }
+                // Checkout Button
+                if (target.id === 'checkout-btn') {
+                    cart.checkout();
+                }
 
-                        cart.addItem(ticketId, eventId, ticketName, ticketPrice, ticketStock);
+                // Close Transaction Modal (X button)
+                if (target.id === 'close-transaction-modal' || target.closest('#close-transaction-modal')) {
+                    cart.hideTransactionSuccessModal();
+                }
 
-                        const quantityEl = document.querySelector(
-                            `.ticket-quantity[data-ticket-id="${ticketId}"]`);
-                        if (quantityEl) {
-                            const currentTicket = cart.items[ticketId];
-                            quantityEl.textContent = currentTicket ? currentTicket.quantity : 0;
-                        }
-                    }
+                // Close Transaction Modal (Close button)
+                if (target.id === 'close-transaction-modal-btn') {
+                    cart.hideTransactionSuccessModal();
+                }
 
-                    if (event.target.classList.contains('decrease-ticket')) {
-                        const ticketId = event.target.dataset.ticketId;
-                        cart.removeItem(ticketId);
-
-                        const quantityEl = document.querySelector(
-                            `.ticket-quantity[data-ticket-id="${ticketId}"]`);
-                        if (quantityEl) {
-                            const currentTicket = cart.items[ticketId];
-                            quantityEl.textContent = currentTicket ? currentTicket.quantity : 0;
-                        }
-                    }
-
-                    if (event.target.id === 'checkout-btn') {
-                        cart.checkout();
-                    }
-                });
             });
-        </script>
+
+
+            function updateTicketDisplay(ticketId) {
+                const quantityEl = document.querySelector(`.ticket-quantity[data-ticket-id="${ticketId}"]`);
+                if (quantityEl) {
+                    const currentTicket = cart.items[ticketId];
+                    quantityEl.textContent = currentTicket ? currentTicket.quantity : 0;
+                }
+            }
+
+        });
+    </script>
 </x-app-layout>
