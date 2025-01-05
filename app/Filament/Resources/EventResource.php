@@ -2,6 +2,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\EventResource\Pages;
+use App\Filament\Resources\EventResource\RelationManagers;
 use App\Models\Event;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -11,8 +12,8 @@ use Filament\Tables\Table;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\Section;
 use Filament\Tables\Filters\SelectFilter;
+use Illuminate\Support\Facades\Storage;
 
 class EventResource extends Resource
 {
@@ -54,12 +55,26 @@ class EventResource extends Resource
                         ->label('Venue')
                         ->searchable(),
 
-                    FileUpload::make('poster')
+                    FileUpload::make('foto')
                         ->label('Poster Event')
                         ->image()
-                        ->directory('event-posters')
-                        ->visibility('public'),
+                        ->directory('event_photos')
+                        ->visibility('public')
+                        ->columnSpanFull()
+                        ->saveUploadedFileUsing(function ($file) {
+                            $filename = 'event_' . time() . '.' . $file->getClientOriginalExtension();
+                            $path = $file->storeAs('event_photos', $filename, 'public');
+                            return $path;
+                        })
+                        ->deleteUploadedFileUsing(function ($file) {
+                            Storage::disk('public')->delete($file);
+                        }),
 
+                    Forms\Components\Select::make('artists')
+                        ->relationship('artists', 'nama')
+                        ->multiple()
+                        ->label('Artis')
+                        ->searchable(),
                 ])
             ]);
     }
@@ -68,7 +83,7 @@ class EventResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\ImageColumn::make('poster')
+                Tables\Columns\ImageColumn::make('foto')
                     ->label('Poster')
                     ->circular(),
 
@@ -80,7 +95,7 @@ class EventResource extends Resource
                 Tables\Columns\TextColumn::make('deskripsi')
                     ->searchable()
                     ->label('Deskripsi Acara')
-                    ->sortable(),
+                    ->limit(50),
 
                 Tables\Columns\TextColumn::make('tanggal')
                     ->label('Tanggal')
@@ -94,6 +109,18 @@ class EventResource extends Resource
                 Tables\Columns\BadgeColumn::make('venue.nama')
                     ->label('Venue')
                     ->color('success'),
+
+                Tables\Columns\TextColumn::make('artists_count')
+                    ->label('Jumlah Artis')
+                    ->counts('artists')
+                    ->badge()
+                    ->color('info'),
+
+                Tables\Columns\TextColumn::make('tickets_count')
+                    ->label('Jumlah Tiket')
+                    ->counts('tickets')
+                    ->badge()
+                    ->color('warning'),
             ])
             ->filters([
                 SelectFilter::make('organizer')
@@ -103,27 +130,41 @@ class EventResource extends Resource
                 SelectFilter::make('venue')
                     ->relationship('venue', 'nama')
                     ->label('Filter Venue'),
+
+                SelectFilter::make('artists')
+                    ->relationship('artists', 'nama')
+                    ->label('Filter Artis')
+                    ->multiple(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\ViewAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\DeleteAction::make()
+                    ->after(function ($record) {
+                        // Delete the associated photo when the event is deleted
+                        if ($record->foto) {
+                            Storage::disk('public')->delete($record->foto);
+                        }
+                    }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\DeleteBulkAction::make()
+                        ->after(function ($records) {
+                            // Delete photos for bulk deleted events
+                            foreach ($records as $record) {
+                                if ($record->foto) {
+                                    Storage::disk('public')->delete($record->foto);
+                                }
+                            }
+                        }),
                     Tables\Actions\RestoreBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->defaultSort('tanggal', 'desc');
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            // Tambahkan relasi jika diperlukan
-        ];
-    }
-
+  
     public static function getPages(): array
     {
         return [

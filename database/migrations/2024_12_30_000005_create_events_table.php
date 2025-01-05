@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->string('nama');
             $table->text('deskripsi');
             $table->date('tanggal');
+            $table->string('foto')->nullable();
             $table->foreignId('organizer_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('venue_id')->constrained('venues')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();

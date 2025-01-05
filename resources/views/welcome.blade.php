@@ -54,8 +54,8 @@
                     <div class="col-11 col-xl-2">
                         <h1 class="mb-0 site-logo"><a href="index.html" class="text-white h2 mb-0">Ticketer</a></h1>
                     </div>
-                    
-                    
+
+
                     <div class="col-12 col-md-10 d-none d-xl-block">
                         <nav class="site-navigation position-relative text-right" role="navigation">
                             <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
@@ -111,8 +111,9 @@
 
 
 
-    <div class="site-blocks-cover overlay" style="background-image: url(https://i.pinimg.com/736x/49/13/29/491329a2616aab8ef30f758f31d60020.jpg);" data-aos="fade"
-        data-stellar-background-ratio="0.5">
+    <div class="site-blocks-cover overlay"
+        style="background-image: url(https://i.pinimg.com/736x/49/13/29/491329a2616aab8ef30f758f31d60020.jpg);"
+        data-aos="fade" data-stellar-background-ratio="0.5">
         <div class="container">
             <div class="row align-items-center justify-content-center text-center">
 
@@ -216,106 +217,49 @@
         <div class="container">
             <div class="row justify-content-center mb-5">
                 <div class="col-md-7 text-center border-primary">
-                    <h2 class="font-weight-light" style="color: blue">Most Visited Events</h2>
-                    <p class="color-black-opacity-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga,
-                        esse!</p>
+                    <h2 class="font-weight-light" style="color: blue">Upcoming Events</h2>
+                    <p class="color-black-opacity-5">Explore our exciting events!</p>
                 </div>
             </div>
 
             <div class="row">
-                <div class="col-md-6 mb-4 mb-lg-4 col-lg-4">
-
-                    <div class="listing-item">
-                        <div class="listing-image">
-                            <img src="https://i.pinimg.com/736x/90/c8/3c/90c83cad1e930bb5028d8df49edfce61.jpg" alt="#" class="img-fluid">
-                        </div>
-                        <div class="listing-item-content">
-                            <a href="listings-single.html" class="bookmark" data-toggle="tooltip"
-                                data-placement="left" title="Bookmark"><span class="icon-heart"></span></a>
-                            <a class="px-3 mb-3 category" href="#">Events</a>
-                            <h2 class="mb-1"><a href="listings-single.html">The Panturas</a></h2>
-                            <span class="address">West Orange, New York</span>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-md-6 mb-4 mb-lg-4 col-lg-4">
-
-                    <div class="listing-item">
-                        <div class="listing-image">
-                            <img src="https://i.pinimg.com/736x/4d/2d/a5/4d2da5765461521da829b52c74efcc20.jpg" alt="#" class="img-fluid">
-                        </div>
-                        <div class="listing-item-content">
-                            <a href="listings-single.html" class="bookmark"><span class="icon-heart"></span></a>
-                            <a class="px-3 mb-3 category" href="#">Events</a>
-                            <h2 class="mb-1"><a href="listings-single.html">Armada</a></h2>
-                            <span class="address">Brooklyn, New York</span>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-md-6 mb-4 mb-lg-4 col-lg-4">
-
-                    <div class="listing-item">
-                        <div class="listing-image">
-                            <img src="https://i.pinimg.com/736x/2a/e0/18/2ae0187626e7d1141df4df6d70d2f11b.jpg" alt="#" class="img-fluid">
-                        </div>
-                        <div class="listing-item-content">
-                            <a href="listings-single.html" class="bookmark"><span class="icon-heart"></span></a>
-                            <a class="px-3 mb-3 category" href="#">Events</a>
-                            <h2 class="mb-1"><a href="listings-single.html">Noah</a></h2>
-                            <span class="address">West Orange, New York</span>
+                @forelse($events as $event)
+                    <div class="col-md-6 mb-4 mb-lg-4 col-lg-4">
+                        <div class="listing-item">
+                            <div class="listing-image">
+                                @if ($event->foto)
+                                    <img src="{{ asset('storage/' . $event->foto) }}" alt="{{ $event->nama }}"
+                                        class="img-fluid">
+                                @else
+                                    <img src="https://via.placeholder.com/350x250.png?text=No+Image" alt="No Image"
+                                        class="img-fluid">
+                                @endif
+                            </div>
+                            <div class="listing-item-content">
+                                <a href="{{ route('events.show', $event) }}" class="bookmark">
+                                    <span class="icon-heart"></span>
+                                </a>
+                                <a class="px-3 mb-3 category" href="#">Events</a>
+                                <h2 class="mb-1">
+                                    <a href="{{ route('events.show', $event) }}">{{ $event->nama }}</a>
+                                </h2>
+                                <span class="address">
+                                    {{ $event->venue->nama ?? 'Venue Not Specified' }}
+                                </span>
+                                <div class="d-flex justify-content-between mt-2">
+                                    <small class="text-muted">
+                                        <i class="icon-calendar"></i>
+                                        {{ \Carbon\Carbon::parse($event->tanggal)->format('d M Y') }}
+                                    </small>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
-                </div>
-
-                <div class="col-md-6 mb-4 mb-lg-4 col-lg-4">
-
-                    <div class="listing-item">
-                        <div class="listing-image">
-                            <img src="https://i.pinimg.com/474x/0b/19/3a/0b193aa3779f4ee28987f1678b4db04f.jpg" alt="#" class="img-fluid">
-                        </div>
-                        <div class="listing-item-content">
-                            <a href="listings-single.html" class="bookmark" data-toggle="tooltip"
-                                data-placement="left" title="Bookmark"><span class="icon-heart"></span></a>
-                            <a class="px-3 mb-3 category" href="#">Events</a>
-                            <h2 class="mb-1"><a href="listings-single.html">Seringai</a></h2>
-                            <span class="address">New York City</span>
-                        </div>
+                @empty
+                    <div class="col-12 text-center">
+                        <p>No events available at the moment.</p>
                     </div>
-
-                </div>
-                <div class="col-md-6 mb-4 mb-lg-4 col-lg-4">
-
-                    <div class="listing-item">
-                        <div class="listing-image">
-                            <img src="https://i.pinimg.com/474x/21/b0/ea/21b0eaab1a210def4f5b5096fcb4dc40.jpg" alt="#" class="img-fluid">
-                        </div>
-                        <div class="listing-item-content">
-                            <a href="listings-single.html" class="bookmark"><span class="icon-heart"></span></a>
-                            <a class="px-3 mb-3 category" href="#">Events</a>
-                            <h2 class="mb-1"><a href="listings-single.html">DJ Remix</a></h2>
-                            <span class="address">Italy</span>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-md-6 mb-4 mb-lg-4 col-lg-4">
-
-                    <div class="listing-item">
-                        <div class="listing-image">
-                            <img src="https://i.pinimg.com/736x/ff/d5/af/ffd5af92e972a91d4987d307251cbb10.jpg" alt="#" class="img-fluid">
-                        </div>
-                        <div class="listing-item-content">
-                            <a href="listings-single.html" class="bookmark"><span class="icon-heart"></span></a>
-                            <a class="px-3 mb-3 category" href="#">Events</a>
-                            <h2 class="mb-1"><a href="listings-single.html">Party and Chill</a></h2>
-                            <span class="address">West Orange, New York</span>
-                        </div>
-                    </div>
-
-                </div>
+                @endforelse
             </div>
         </div>
     </div>
@@ -328,7 +272,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 mb-5">
-                    <img src="https://i.pinimg.com/736x/fd/e5/ab/fde5ab020ecedac8b6a7cd88d459e375.jpg" alt="#" class="img-fluid rounded">
+                    <img src="https://i.pinimg.com/736x/fd/e5/ab/fde5ab020ecedac8b6a7cd88d459e375.jpg" alt="#"
+                        class="img-fluid rounded">
                 </div>
                 <div class="col-md-5 ml-auto">
                     <h2 class="mb-3" style="color: blue">Why Us</h2>
@@ -412,7 +357,8 @@
                 <div class="col-md-6 mb-4 mb-lg-0 col-lg-4">
                     <div class="how-it-work-step">
                         <div class="img-wrap">
-                            <img src="https://i.pinimg.com/736x/c0/f1/34/c0f13488fe9e402411b1706682a4663b.jpg" alt="#" class="img-fluid">
+                            <img src="https://i.pinimg.com/736x/c0/f1/34/c0f13488fe9e402411b1706682a4663b.jpg"
+                                alt="#" class="img-fluid">
                         </div>
                         <span class="number">1</span>
                         <h3>Decide What To Do</h3>
@@ -423,7 +369,8 @@
                 <div class="col-md-6 mb-4 mb-lg-0 col-lg-4">
                     <div class="how-it-work-step">
                         <div class="img-wrap">
-                            <img src="https://i.pinimg.com/736x/c0/f1/34/c0f13488fe9e402411b1706682a4663b.jpg" alt="#" class="img-fluid">
+                            <img src="https://i.pinimg.com/736x/c0/f1/34/c0f13488fe9e402411b1706682a4663b.jpg"
+                                alt="#" class="img-fluid">
                         </div>
                         <span class="number">2</span>
                         <h3>Find What You Want</h3>
@@ -434,7 +381,8 @@
                 <div class="col-md-6 mb-4 mb-lg-0 col-lg-4">
                     <div class="how-it-work-step">
                         <div class="img-wrap">
-                            <img src="https://i.pinimg.com/736x/c0/f1/34/c0f13488fe9e402411b1706682a4663b.jpg" alt="#" class="img-fluid">
+                            <img src="https://i.pinimg.com/736x/c0/f1/34/c0f13488fe9e402411b1706682a4663b.jpg"
+                                alt="#" class="img-fluid">
                         </div>
                         <span class="number">3</span>
                         <h3>Explore Amazing Places</h3>
@@ -459,7 +407,8 @@
                 <div>
                     <div class="testimonial">
                         <figure class="mb-4">
-                            <img src="https://i.pinimg.com/736x/5f/46/2d/5f462dcfba987090d3314ca981013b6c.jpg" alt="#" class="img-fluid mb-3">
+                            <img src="https://i.pinimg.com/736x/5f/46/2d/5f462dcfba987090d3314ca981013b6c.jpg"
+                                alt="#" class="img-fluid mb-3">
                             <p>Willie Smith</p>
                         </figure>
                         <blockquote>
@@ -472,7 +421,8 @@
                 <div>
                     <div class="testimonial">
                         <figure class="mb-4">
-                            <img src="https://i.pinimg.com/736x/ff/9a/8f/ff9a8fdbf411018e730072ecb1a253cc.jpg" alt="#" class="img-fluid mb-3">
+                            <img src="https://i.pinimg.com/736x/ff/9a/8f/ff9a8fdbf411018e730072ecb1a253cc.jpg"
+                                alt="#" class="img-fluid mb-3">
                             <p>Robert Jones</p>
                         </figure>
                         <blockquote>
@@ -486,7 +436,8 @@
                 <div>
                     <div class="testimonial">
                         <figure class="mb-4">
-                            <img src="https://i.pinimg.com/736x/a1/d7/dd/a1d7dd6208fc487a08ae26c6c02629c3.jpg" alt="#" class="img-fluid mb-3">
+                            <img src="https://i.pinimg.com/736x/a1/d7/dd/a1d7dd6208fc487a08ae26c6c02629c3.jpg"
+                                alt="#" class="img-fluid mb-3">
                             <p>Peter Richmond</p>
                         </figure>
                         <blockquote>
@@ -500,7 +451,8 @@
                 <div>
                     <div class="testimonial">
                         <figure class="mb-4">
-                            <img src="https://i.pinimg.com/736x/a7/1d/c8/a71dc85b676ecdbf92cab9423b3bfa99.jpg" alt="#" class="img-fluid mb-3">
+                            <img src="https://i.pinimg.com/736x/a7/1d/c8/a71dc85b676ecdbf92cab9423b3bfa99.jpg"
+                                alt="#" class="img-fluid mb-3">
                             <p>Bruce Rogers</p>
                         </figure>
                         <blockquote>
@@ -529,7 +481,8 @@
             <div class="row mb-3 align-items-stretch">
                 <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
                     <div class="h-entry">
-                        <img src="https://i.pinimg.com/736x/0b/72/d0/0b72d0e3563d27314e9764a70ae64e4a.jpg" alt="#" class="img-fluid">
+                        <img src="https://i.pinimg.com/736x/0b/72/d0/0b72d0e3563d27314e9764a70ae64e4a.jpg"
+                            alt="#" class="img-fluid">
                         <div class="h-entry-inner">
                             <h2 class="font-size-regular" style="color: blue">Etiquette tips for travellers</h2>
                             <div class="meta mb-4" style="color: blue">by Jeff Sheldon<span
@@ -541,7 +494,8 @@
                 </div>
                 <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
                     <div class="h-entry">
-                        <img src="https://i.pinimg.com/736x/a9/63/b0/a963b03a956411a18282cf0b5f56c917.jpg" alt="#" class="img-fluid">
+                        <img src="https://i.pinimg.com/736x/a9/63/b0/a963b03a956411a18282cf0b5f56c917.jpg"
+                            alt="#" class="img-fluid">
                         <div class="h-entry-inner">
                             <h2 class="font-size-regular" style="color: blue">Etiquette tips for travellers</h2>
                             <div class="meta mb-4" style="color: blue">by Jeff Sheldon<span
@@ -553,7 +507,8 @@
                 </div>
                 <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
                     <div class="h-entry">
-                        <img src="https://i.pinimg.com/736x/2d/86/cf/2d86cf088eeb46f2ef478802b7aa9d5a.jpg" alt="#" class="img-fluid">
+                        <img src="https://i.pinimg.com/736x/2d/86/cf/2d86cf088eeb46f2ef478802b7aa9d5a.jpg"
+                            alt="#" class="img-fluid">
                         <div class="h-entry-inner">
                             <h2 class="font-size-regular" style="color: blue">Etiquette tips for travellers</h2>
                             <div class="meta mb-4" style="color: blue">by Jeff Sheldon<span

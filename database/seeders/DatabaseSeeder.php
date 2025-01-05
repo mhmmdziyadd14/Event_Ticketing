@@ -19,8 +19,8 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
 
         // Buat venue dan genre
-        $venues = Venue::factory()->count(3)->create();
-        $artists = Artist::factory()->count(5)->create();
+        $venues = Venue::factory()->count(10)->create();
+        $artists = Artist::factory()->count(10)->create();
 
         // Buat event oleh organizer
         $organizers = User::role('organizer')->get();

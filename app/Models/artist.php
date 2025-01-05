@@ -11,7 +11,7 @@ class artist extends Model
     protected $fillable = [
         'nama',
         'deskripsi',
-        'foto',
+        
     ];
 
     // Many-to-Many relationship with Events
