@@ -1,10 +1,21 @@
 <x-app-layout>
-    <div class="py-12 bg-gray-100 dark:bg-gray-800">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <style>
+        .web-bg {
+            background-color: rgb(14, 1, 17);
+            color: white;
+        }
+
+        .card-hd {
+            background-color: #17001f;
+            color: white;
+        }
+    </style>
+    <div class="py-12 web-bg dark:bg-gray-300">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 ">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
                 {{-- Create Event Form --}}
-                <div class="bg-white dark:bg-gray-900 rounded-lg shadow-xl p-6">
+                <div class="bg-white card-hd rounded-lg shadow-xl p-6">
                     <h3 class="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100">Create New Event</h3>
 
                     <form id="eventForm" action="{{ route('events.store') }}" method="POST" enctype="multipart/form-data">
@@ -13,26 +24,24 @@
                             <div>
                                 <x-input-label for="nama" :value="__('Event Name')" />
                                 <x-text-input id="nama" name="nama" type="text"
-                                    class="mt-1 block w-full dark:bg-gray-700 dark:text-gray-300" required />
+                                    class="mt-1 block w-full web-bg  dark:text-gray-300" required />
                             </div>
 
-                            <div>
+                            <div class="mt-1">
                                 <x-input-label for="deskripsi" :value="__('Description')" />
-                                <textarea name="deskripsi" class="mt-1 block w-full rounded-md dark:bg-gray-700 dark:text-gray-300" rows="4"
-                                    required></textarea>
+                                <textarea name="deskripsi" class="mt-1 block w-full rounded-md web-bg dark:text-gray-300" rows="4" required></textarea>
                             </div>
 
                             <div class="grid grid-cols-2 gap-4">
-                                <div>
+                                <div class="mt-1">
                                     <x-input-label for="tanggal" :value="__('Event Date')" />
                                     <x-text-input type="date" name="tanggal"
-                                        class="mt-1 block w-full dark:bg-gray-700 dark:text-gray-300" required />
+                                        class="mt-1 block w-full web-bg dark:text-gray-300" required />
                                 </div>
-                                <div>
+                                <div class="mt-1">
                                     <x-input-label for="venue_id" :value="__('Venue')" />
                                     <select name="venue_id"
-                                        class="mt-1 block w-full rounded-md dark:bg-gray-700 dark:text-gray-300"
-                                        required>
+                                        class="mt-1 block w-full rounded-md web-bg dark:text-gray-300" required>
                                         @foreach ($venues as $venue)
                                             <option value="{{ $venue->id }}">{{ $venue->nama }}</option>
                                         @endforeach
@@ -40,20 +49,20 @@
                                 </div>
                             </div>
 
-                            <div>
+                            <div class="mt-1">
                                 <x-input-label for="foto" :value="__('Event Photo')" />
                                 <x-text-input type="file" name="foto"
-                                    class="mt-1 block w-full dark:bg-gray-700 dark:text-gray-300" accept="image/*" />
+                                    class="mt-1 block w-full web-bg dark:text-gray-300" accept="image/*" />
                             </div>
 
                             {{-- Artist Selection --}}
-                            <div>
+                            <div class="mt-1">
                                 <x-input-label for="artists" :value="__('Select Artists')" />
                                 <div id="artists-container" class="space-y-2">
                                     <div class="artist-selection-group flex items-center space-x-2 relative"
                                         data-index="0">
                                         <select name="artists[]"
-                                            class="mt-1 block w-full artist-select rounded-md dark:bg-gray-700 dark:text-gray-300">
+                                            class="mt-1 block w-full artist-select rounded-md web-bg dark:text-gray-300">
                                             <option value="">Select an Artist</option>
                                             @foreach ($artists as $artist)
                                                 <option value="{{ $artist->id }}">{{ $artist->nama }}</option>
@@ -72,14 +81,15 @@
                                     </button>
                                 </div>
                             </div>
-
-                            <x-primary-button>Create Event</x-primary-button>
+                            <div class="text-center">
+                                <x-primary-button class="web-bg  ">Create Event</x-primary-button>
+                            </div>
                         </div>
                     </form>
                 </div>
 
                 {{-- Ticket Creation Section --}}
-                <div class="bg-white dark:bg-gray-900 rounded-lg shadow-xl p-6">
+                <div class="bg-white card-hd rounded-lg shadow-xl p-6">
                     <h3 class="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100">Add Tickets</h3>
                     <div id="ticket-container">
                         {{-- Initial ticket field --}}
@@ -87,23 +97,23 @@
                             <div>
                                 <x-input-label for="ticket_nama[]" :value="__('Ticket Name')" />
                                 <x-text-input name="ticket_nama[]" type="text"
-                                    class="ticket-name mt-1 block w-full rounded-md dark:bg-gray-700 dark:text-gray-300"
+                                    class="ticket-name mt-1 block w-full rounded-md web-bg dark:text-gray-300"
                                     required />
                             </div>
-                            <div>
+                            <div class="mt-1">
                                 <x-input-label for="ticket_harga[]" :value="__('Ticket Price')" />
                                 <x-text-input name="ticket_harga[]" type="number"
-                                    class="mt-1 block w-full rounded-md dark:bg-gray-700 dark:text-gray-300" required />
+                                    class="mt-1 block w-full rounded-md web-bg dark:text-gray-300" required />
                             </div>
-                            <div>
+                            <div class="mt-1">
                                 <x-input-label for="ticket_stok[]" :value="__('Ticket Stock')" />
                                 <x-text-input name="ticket_stok[]" type="number"
-                                    class="mt-1 block w-full rounded-md dark:bg-gray-700 dark:text-gray-300" required />
+                                    class="mt-1 block w-full rounded-md web-bg dark:text-gray-300" required />
                             </div>
-                            <div>
+                            <div class="mt-1">
                                 <x-input-label for="ticket_type[]" :value="__('Ticket Type')" />
                                 <select name="ticket_type[]"
-                                    class="mt-1 block w-full rounded-md dark:bg-gray-700 dark:text-gray-300" required>
+                                    class="mt-1 block w-full rounded-md web-bg dark:text-gray-300" required>
                                     <option value="reguler">Regular</option>
                                     <option value="vip">VIP</option>
                                     <option value="vvip">VVIP</option>
@@ -123,7 +133,7 @@
                 </div>
 
                 {{-- Event List Section --}}
-                <div class="bg-white dark:bg-gray-900 rounded-lg shadow-xl p-6 col-span-1 md:col-span-2 lg:col-span-1">
+                <div class="bg-white card-hd rounded-lg shadow-xl p-6 col-span-1 md:col-span-2 lg:col-span-1">
                     <h3 class="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100">My Events</h3>
 
                     <div class="space-y-4">
@@ -354,3 +364,10 @@
         }
     </style>
 </x-app-layout>
+</svg>
+<i class="bi bi-instagram"></i>
+</a>
+</div>
+</footer>
+
+</html>
