@@ -29,7 +29,7 @@ class TransaksiController extends Controller
                 'event_id' => 'required|exists:events,id',
                 'tickets' => 'required|array|min:1',
                 'tickets.*.id' => 'required|exists:tickets,id',
-                'tickets.*.quantity' => 'required|integer|min:1|max:10',
+                'tickets.*.quantity' => 'required|integer|min:1|max:100',
             ], [
                 // Custom error messages
                 'event_id.required' => 'Event selection is required.',
@@ -91,7 +91,7 @@ class TransaksiController extends Controller
                     'user_id' => Auth::id(),
                     'event_id' => $event->id,
                     'grand_total' => $grandTotal,
-                    'status' => 'pending'
+                    'status' => 'completed'
                 ]);
 
                 // Create detail transaksi
