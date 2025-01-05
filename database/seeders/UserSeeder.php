@@ -20,8 +20,8 @@ class UserSeeder extends Seeder
         // Daftar peran yang akan dibuat
         $roleDistribution = [
             'admin' => 1,
-            'organizer' => 5,
-            'user' => 5
+            'organizer' => 10,
+            'user' => 10
         ];
 
         // Buat pengguna untuk setiap peran

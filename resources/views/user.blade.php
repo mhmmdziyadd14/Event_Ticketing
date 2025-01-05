@@ -21,13 +21,22 @@
     }
 
     .card-hd {
-        color: #310c38;
+        background-color: #270033;
+
+    }
+
+    .card-wr {
+        color: #1a1346
+    }
+
+    .card-bg {
+        background-color: #ebebe8;
     }
 </style>
 
-<body style="background-color:rgb(0, 0, 0)">
+<body style="background-color:rgb(14, 1, 17)">
 
-    <nav class="navbar navbar-expand-lg  navbar-dark" style="background-color: #310c38">
+    <nav class="navbar navbar-expand-lg  navbar-dark card-hd">
         <div class="container-fluid">
             <a class="navbar-brand font-monospace" href="#">
                 <i class="bi bi-ticket-perforated"></i>
@@ -50,16 +59,14 @@
             </div>
         </div>
     </nav>
-    </div>
-    </nav>
+
 
 
     <!-- Profile modal -->
-
     <div class="modal fade" id="createprfl" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content ">
-                <div class="modal-header bg-dark text-light">
+                <div class="modal-header text-light card-hd">
                     <h5 class="modal-title">Profile</h5>
                     <button type="button" class="btn btn-close btn-light" data-bs-dismiss="modal"></button>
                 </div>
@@ -86,7 +93,7 @@
                             </div>
                         </div>
                         <div class="mb-3 d-flex justify-content-between">
-                            <a class="btn btn-outline-dark" href="tiket_anda.php">My Ticket</a>
+                            <a class="btn btn-outline-info" href="tiket_anda.php">My Ticket</a>
                             <a class="btn btn-outline-danger" href="logout.php">Logout</a>
                         </div>
                     </div>
@@ -94,19 +101,19 @@
             </form>
         </div>
     </div>
-    </div>
+
 
     <div class="container mt-4 ">
         <div class="row">
             <div class="col-lg-4 col-md-6 col-sm-12 mt-3 card-tf ">
                 <div class="card ">
                     <!-- Menampilkan Foto -->
-                    <div class="card-header text-light " style="background-color: #310c38">
-                        <h5 class="card-title my-auto text-center font-monospace
-                                    ">Transaksi
+                    <div class="card-header text-light card-hd">
+                        <h5 class="card-title my-auto text-center font-monospace">
+                            Transaction
                         </h5>
                     </div>
-                    <div style="background-color:#ebebe8;" class=" container">
+                    <div class="card-bg container">
                         <div class="mt-3">
                             <p class="card-text fw-semibold">VIP Ticket</p>
                             <div class="d-flex justify-content-between me-2">
@@ -122,27 +129,82 @@
                             </div>
                         </div>
                         <div class="text-end d-flex justify-content-between">
-                            <p class="fw-semibold">SubTotal</p>
+                            <p class="fw-semibold">Total</p>
                             <p class="fw-bold  me-2">IDR <span class="fw-semibold"> 525.000</span></p>
                         </div>
                         <div class="text-end container d-flex justify-content-center">
                             <button class="btn btn-outline-success my-3" data-bs-toggle="modal"
-                                data-bs-target="#createjual">Checkout</button>
+                                data-bs-target="#createco">Checkout</button>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Checkout modal -->
+            <div class="modal fade" id="createco" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content ">
+                        <div class="modal-header text-light card-hd">
+                            <h5 class="modal-title">Checkout</h5>
+                            <button type="button" class="btn btn-close btn-light" data-bs-dismiss="modal"></button>
+                        </div>
+                        <form action="backend.php" method="POST">
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="nama" class="form-label fw-bold">Account</label>
+                                    <div class="border container">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="nama" class="form-label fw-bold">Tickets </label>
+                                    <div class="border container">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="nama" class="form-label fw-bold">Payment</label>
+                                    <div class="border container">
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <div class="mb-3">
+                                        <label for="nama" class="form-label fw-normal">VIP</label>
+                                        <p class="fw-light">2 x 150.000</p>
+
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="nama" class="form-label fw-normal">Reguler</label>
+                                        <p class="fw-light">3 x 75.000</p>
+
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <p class="fw-bold">Total</p>
+                                    <p class="fw-bold  me-2">IDR <span class="fw-semibold"> 525.000</span></p>
+
+                                </div>
+                                <div class="mb-3 text-center">
+                                    <a class="btn btn-outline-success" href="tiket_anda.php">Pay</a>
+                                </div>
+                            </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+
+
+
+
             <div class="col-lg-6 col-md-6 col-sm-12 mt-3 container">
                 <div class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <input class="form-control me-2" type="search" placeholder="Search Event" aria-label="Search">
                     <button class="btn btn-outline-light" type="submit"><i class="bi bi-search"></i></button>
                 </div>
                 <div class="mt-3 text-white">
                     <h1>KickFest.</h1>
                 </div>
                 <div class="d-flex mt-2">
-                    <div class="card  me-2" style="width: 18rem;">
-                        <div class="card-body">
+                    <div class="card card-tf me-2" style="width: 18rem;">
+                        <div class="card-body card-bg">
                             <h5 class="card-title">VIP Ticket</h5>
                             <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
                             <p class="card-text">Some quick example text to build on the card title and make up the
@@ -156,8 +218,8 @@
                         </div>
 
                     </div>
-                    <div class="card  " style="width: 18rem;">
-                        <div class="card-body">
+                    <div class="card card-tf " style="width: 18rem;">
+                        <div class="card-body card-bg">
                             <h5 class="card-title">Reguler Ticket</h5>
                             <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
                             <p class="card-text">Some quick example text to build on the card title and make up the
@@ -178,60 +240,8 @@
     </div>
 
 
-    <!-- Modal untuk Pembelian Tiket -->
-    <div class="modal fade" id="createjual" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header bg-dark text-light">
-                    <h5 class="modal-title">Buy Ticket</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <form action="backend.php" method="POST">
-                    <div class="modal-body">
-                        <!-- Dropdown Pilih Tiket -->
-                        <div class="mb-3">
-                            <label for="nama_tiket" class="form-label">Ticket Name</label>
-                            <select name="nama_tiket" id="ticket_name" class="form-control" required
-                                onchange="updateTicketPrice()">
-                                <option value="">Select Ticket</option>
-                            </select>
-                        </div>
-
-                        <!-- Harga Tiket (diisi otomatis) -->
-                        <div class="mb-3">
-                            <label for="harga_tiket" class="form-label">Ticket Price</label>
-                            <input type="text" name="harga_tiket" id="ticket_price" class="form-control" readonly
-                                required>
-                        </div>
-
-                        <!-- Email Pengguna (diisi otomatis) -->
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" name="email" id="user_email" class="form-control"
-                                value="" readonly required>
-                        </div>
-
-                        <!-- Jumlah Tiket -->
-                        <div class="mb-3">
-                            <label for="jumlah" class="form-label">Quantity</label>
-                            <input type="number" name="jumlah" class="form-control" required>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" name="createjual" class="btn btn-dark">Save</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-
-
-
-
-    </div>
-    <div class="text-center text-secondary mt-5">
-        <h5>Thanks For Visiting Our Website.</h5>
+    <div class="text-center text-secondary mt-5 ">
+        <h5 class="card-wr">Thanks For Visiting Our Website.</h5>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">

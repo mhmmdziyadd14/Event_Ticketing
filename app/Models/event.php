@@ -12,6 +12,7 @@ class event extends Model
         'nama',
         'deskripsi',
         'tanggal',
+        'foto',
         'organizer_id',
         'venue_id',
     ];

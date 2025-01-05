@@ -39,13 +39,8 @@ class ArtistResource extends Resource
                     FileUpload::make('foto')
                         ->label('Foto Profil')
                         ->image()
-                        ->directory('artist-photos')
-                        ->visibility('public')
-                        ->nullable(),
-
-                    Forms\Components\TextInput::make('genre')
-                        ->label('Genre Musik')
-                        ->maxLength(100),
+                        ->enableDownload()
+                        ->enableOpen(),
 
                     Forms\Components\TextInput::make('sosial_media')
                         ->label('Sosial Media')
@@ -77,7 +72,7 @@ class ArtistResource extends Resource
                 Tables\Columns\TextColumn::make('deskripsi')
                     ->label('Deskripsi')
                     ->limit(50),
-                    // ->toggleable(isToggledHiddenByDefault: true)
+                // ->toggleable(isToggledHiddenByDefault: true)
 
                 // Tables\Columns\TextColumn::make('sosial_media')
                 //     ->label('Sosial Media')
@@ -86,7 +81,7 @@ class ArtistResource extends Resource
                 //     ->toggleable(isToggledHiddenByDefault: true)
             ])
             ->filters([
-                
+
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

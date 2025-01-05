@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Filament\Resources\UserResource\Pages;
+namespace App\Filament\Resources\TicketResource\Pages;
 
-use App\Filament\Resources\UserResource;
+use App\Filament\Resources\TicketResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ViewRecord;
 
-class ViewUser extends ViewRecord
+class ViewTicket extends ViewRecord
 {
-    protected static string $resource = UserResource::class;
+    protected static string $resource = TicketResource::class;
+
     protected function getHeaderActions(): array
     {
         return [
