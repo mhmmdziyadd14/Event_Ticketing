@@ -5,6 +5,7 @@
     use Filament\Facades\Filament;
     use App\Http\Controllers\WelcomeController;
     use App\Http\Controllers\EventController;
+    use App\Http\Controllers\TransaksiController;
     Route::get('/', function () {
         return view('welcome');
     });
@@ -28,10 +29,15 @@
 
 
 
-    Route::get('user', function () {
-        return view('user');
-    })->middleware(['auth', 'verified', 'role:user']);
-
+    Route::get('user', [EventController::class, 'userDashboard'])
+    ->middleware(['auth', 'verified', 'role:user'])
+    ->name('user');
+    Route::middleware(['auth', 'verified', 'role:user'])->group(function () {
+        Route::post('/transactions', [TransaksiController::class, 'store'])->name('transactions.store');
+        Route::get('/transactions', [TransaksiController::class, 'index'])->name('transactions.index');
+        Route::get('/transactions/{transaksi}', [TransaksiController::class, 'show'])->name('transactions.show');
+        Route::post('/transactions/{transaksi}/cancel', [TransaksiController::class, 'cancel'])->name('transactions.cancel');
+    });
     Route::get('transaction', function () {
         return view('transaction');
     })->middleware(['auth', 'verified', 'role:user']);
