@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Register</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
-        /* Gaya untuk latar belakang dan form */
         body {
             margin: 0;
             padding: 0;
@@ -19,13 +20,13 @@
         }
 
         .register-container {
-            width: 500px; /* Mengurangi lebar agar lebih proporsional */
-            padding: 2.5rem; /* Mengurangi padding agar lebih kompak */
+            width: 500px;
+            padding: 2.5rem;
             background-color: rgba(255, 255, 255, 0.85);
             border-radius: 1rem;
             box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
             transition: all 0.3s ease-in-out;
-            margin: 0 auto; /* Menjaga container tetap di tengah */
+            margin: 0 auto;
         }
 
         .register-container:hover {
@@ -51,6 +52,19 @@
             border-radius: 0.5rem;
             box-shadow: none;
             border: 1px solid #ddd;
+            background-color: #e9ecef; /* Background for input fields */
+        }
+
+        .input-group-text {
+            background-color: white; /* Background for icons */
+            border: 1px solid #ddd;
+            color: #46498d; /* Default color for icons */
+            border-radius: 0.5rem 0 0 0.5rem;
+        }
+
+        /* Specific style for email icon */
+        .input-group-text.email-icon {
+            color: #1E90FF; /* Blue color for email icon */
         }
 
         .primary-button {
@@ -79,13 +93,6 @@
             text-decoration: underline;
         }
 
-        .d-flex {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 1rem;
-        }
-
         @media (max-width: 768px) {
             .register-container {
                 width: 90%;
@@ -101,7 +108,7 @@
 <body>
     <div class="d-flex align-items-center justify-content-center min-vh-100">
         <div class="register-container">
-            <h2>Register</h2>
+            <h2><i class="fas fa-user-plus"></i> Register</h2>
             <form method="POST" action="{{ route('register') }}">
                 @csrf
 
@@ -109,6 +116,7 @@
                 <div class="mb-3">
                     <label for="name" class="form-label">{{ __('Name') }}</label>
                     <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-user"></i></span>
                         <input id="name" class="form-control" type="text" name="name" :value="old('name')" required autofocus autocomplete="name">
                     </div>
                 </div>
@@ -117,6 +125,7 @@
                 <div class="mb-3">
                     <label for="email" class="form-label">{{ __('Email') }}</label>
                     <div class="input-group">
+                        <span class="input-group-text email-icon"><i class="fas fa-envelope"></i></span>
                         <input id="email" class="form-control" type="email" name="email" :value="old('email')" required autocomplete="username">
                     </div>
                 </div>
@@ -125,6 +134,7 @@
                 <div class="mb-3">
                     <label for="password" class="form-label">{{ __('Password') }}</label>
                     <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-lock"></i></span>
                         <input id="password" class="form-control" type="password" name="password" required autocomplete="new-password">
                     </div>
                 </div>
@@ -133,6 +143,7 @@
                 <div class="mb-3">
                     <label for="password_confirmation" class="form-label">{{ __('Confirm Password') }}</label>
                     <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-lock"></i></span>
                         <input id="password_confirmation" class="form-control" type="password" name="password_confirmation" required autocomplete="new-password">
                     </div>
                 </div>
@@ -149,7 +160,7 @@
 
                 <div class="d-flex flex-column justify-content-between align-items-center mt-4">
                     <button type="submit" class="btn primary-button">
-                        {{ __('Register') }}
+                        <i class="fas fa-user-check"></i> {{ __('Register') }}
                     </button>
                     <a class="text-sm" href="{{ route('login') }}">
                         {{ __('Already registered?') }}
