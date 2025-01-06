@@ -139,10 +139,20 @@
      /**
       * Display the specified event.
       */
-     public function show(Event $event)
-     {
-         return view('events.show', compact('event'));
-     }
+      public function show(Event $event)
+      {
+          // Eager load relationships to prevent N+1 queries
+          $event->load([
+              'venue', 
+              'artists', 
+              'tickets' => function($query) {
+                  // Only load available tickets
+                  $query->where('stok', '>', 0);
+              }
+          ]);
+          
+          return view('events.show', compact('event'));
+      }
 
      public function userDashboard(Request $request)
      {

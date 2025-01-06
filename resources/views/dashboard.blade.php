@@ -39,9 +39,7 @@
                     @if(Auth::user()->hasRole('user'))
                         <h3 class="mt-6 text-lg font-bold text-gray-800 dark:text-gray-100">User Panel</h3>
                         <ul class="list-disc list-inside text-gray-600 dark:text-gray-400">
-                            <li><a href="/view-events" class="text-blue-500 hover:underline">Lihat Event</a></li>
-                            <li><a href="/buy-tickets" class="text-blue-500 hover:underline">Beli Tiket</a></li>
-                            <li><a href="/view-my-transactions" class="text-blue-500 hover:underline">Lihat Transaksi Saya</a></li>
+                            <li><a href="/user" class="text-blue-500 hover:underline">Beli Tiket</a></li>
                         </ul>
                     @endif
                 </div>

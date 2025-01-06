@@ -1,81 +1,118 @@
-<x-app-layout>
-    <div class="py-12 bg-gray-100 dark:bg-gray-800">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="grid grid-cols-5 grid-rows-5 gap-4">
-                <!-- Create Event Section -->
-                <div class="row-span-2 bg-white dark:bg-gray-900 rounded-lg shadow-xl p-6">
-                    <h3 class="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100">Create Event</h3>
-                    <!-- Form or Content for Creating an Event -->
-                    <p>Content for creating an event goes here.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ $event->nama }} - Event Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .event-image {
+            max-height: 500px;
+            object-fit: cover;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card mb-3">
+            <img src="{{ $event->foto ? asset('storage/' . $event->foto) : 'https://via.placeholder.com/1200x600.png?text=Event+Image' }}" 
+                 class="card-img-top event-image" alt="{{ $event->nama }}">
+            
+            <div class="card-body text-center">
+                <h1 class="card-title">{{ $event->nama }}</h1>
+                
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <strong>Venue:</strong> 
+                        {{ optional($event->venue)->nama ?? 'Venue Not Specified' }}
+                    </div>
+                    <div class="col-md-4">
+                        <strong>Date:</strong> 
+                        {{ \Carbon\Carbon::parse($event->tanggal)->format('d M Y') }}
+                    </div>
+                    <div class="col-md-4">
+                        <strong>Time:</strong> 
+                        {{ \Carbon\Carbon::parse($event->tanggal)->format('H:i A') }}
+                    </div>
                 </div>
 
-                <!-- First Event Details -->
-                <div class="bg-white dark:bg-gray-900 rounded-lg shadow-xl p-6">
-                    <h4 class="font-bold text-gray-800 dark:text-gray-100">Event 1 Details</h4>
-                    <p>Details of the first event.</p>
+                <p class="card-text">{{ $event->deskripsi ?? 'No description available' }}</p>
+
+                <div class="mb-3">
+                    <h4>Artists</h4>
+                    @if($event->artists && $event->artists->count() > 0)
+                        <div class="d-flex justify-content-center gap-3">
+                            @foreach($event->artists as $artist)
+                                <span class="badge bg-primary">{{ $artist->nama }}</span>
+                            @endforeach
+                        </div>
+                    @else
+                        <p>No artists specified</p>
+                    @endif
                 </div>
 
-                <!-- Conditional Second Event Creation -->
-                <div class="col-start-2 row-start-2 bg-white dark:bg-gray-900 rounded-lg shadow-xl p-6">
-                    <h4 class="font-bold text-gray-800 dark:text-gray-100">Create Second Event</h4>
-                    <p>If there are additional details or options, they go here.</p>
+                <div class="row mt-4">
+                    <div class="col-md-8 offset-md-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Ticket Options</h5>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Type</th>
+                                            <th>Price</th>
+                                            <th>Available</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse($event->tickets as $ticket)
+                                            <tr>
+                                                <td>{{ ucfirst($ticket->type) }}</td>
+                                                <td>Rp {{ number_format($ticket->harga, 0, ',', '.') }}</td>
+                                                <td>{{ $ticket->stok }}</td>
+                                                <td>
+                                                    @auth
+                                                        @if(auth()->user()->hasRole('user'))
+                                                            <form action="{{ route('login') }}" method="POST">
+                                                                @csrf
+                                                                <input type="hidden" name="ticket_id" value="{{ $ticket->id }}">
+                                                                <input type="hidden" name="event_id" value="{{ $event->id }}">
+                                                                <button type="submit" class="btn btn-primary btn-sm">
+                                                                    Buy Ticket
+                                                                </button>
+                                                            </form>
+                                                        @else
+                                                            <a href="{{ route('login') }}" class="btn btn-primary btn-sm">
+                                                                Login to Buy
+                                                            </a>
+                                                        @endif
+                                                    @else
+                                                        <a href="{{ route('login') }}" class="btn btn-primary btn-sm">
+                                                            Login to Buy
+                                                        </a>
+                                                    @endauth
+                                                </td>
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <td colspan="4" class="text-center">No tickets available</td>
+                                            </tr>
+                                        @endforelse
+                                    </tbody>
+                                    
+                                </table>
+                                <a href="{{ route('welcome') }}" class="btn btn-primary mb-3">
+                                    <i class="fas fa-arrow-left"></i> Back to Events
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-                <!-- List of Events -->
-                <div class="row-span-2 row-start-3 bg-white dark:bg-gray-900 rounded-lg shadow-xl p-6">
-                    <h4 class="font-bold text-gray-800 dark:text-gray-100">List of Events</h4>
-                    <!-- List of events goes here -->
-                    <p>List all events here.</p>
-                </div>
-
-                <!-- First Event Ticket -->
-                <div id="ticket-list" class="row-start-3 bg-white dark:bg-gray-900 rounded-lg shadow-xl p-6">
-                    <h4 class="font-bold text-gray-800 dark:text-gray-100">Event 1 Ticket 1</h4>
-                    <p>Details for the first ticket of the first event.</p>
-                </div>
-            </div>
-
-            <!-- Buttons to add or undo ticket -->
-            <div class="mt-6">
-                <button id="add-ticket" class="px-4 py-2 bg-blue-500 text-white rounded-md">Add Another Ticket</button>
-                <button id="undo-ticket" class="px-4 py-2 bg-red-500 text-white rounded-md">Undo</button>
             </div>
         </div>
     </div>
-
-    <script>
-        let ticketCount = 1;
-        const ticketList = document.getElementById('ticket-list');
-        const undoButton = document.getElementById('undo-ticket');
-        const addTicketButton = document.getElementById('add-ticket');
-
-        // Hide undo button initially
-        undoButton.style.display = 'none';
-
-        // Add another ticket
-        addTicketButton.addEventListener('click', () => {
-            ticketCount++;
-            const newTicket = document.createElement('div');
-            newTicket.className = 'bg-white dark:bg-gray-900 rounded-lg shadow-xl p-6 mt-4';
-            newTicket.id = `ticket-${ticketCount}`;
-            newTicket.innerHTML = `
-                <h4 class="font-bold text-gray-800 dark:text-gray-100">Event 1 Ticket ${ticketCount}</h4>
-                <p>Details for ticket ${ticketCount} of the first event.</p>
-            `;
-            ticketList.appendChild(newTicket);
-            undoButton.style.display = 'inline-block';
-        });
-
-        // Undo last added ticket
-        undoButton.addEventListener('click', () => {
-            if (ticketCount > 1) {
-                const lastTicket = document.getElementById(`ticket-${ticketCount}`);
-                ticketList.removeChild(lastTicket);
-                ticketCount--;
-                if (ticketCount === 1) {
-                    undoButton.style.display = 'none';
-                }
-            }
-        });
-    </script>
-</x-app-layout>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

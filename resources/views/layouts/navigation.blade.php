@@ -49,6 +49,9 @@
                         <x-dropdown-link :href="route('profile.edit')" class="web-bg">
                             {{ __('Profile') }}
                         </x-dropdown-link>
+                        <x-dropdown-link :href="route('welcome')" class="web-bg">
+                            {{ __('Home') }}
+                        </x-dropdown-link>
 
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}" class="web-bg">
