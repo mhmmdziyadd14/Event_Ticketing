@@ -4,7 +4,6 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-
     "content-hash": "09502000d99d7903c8139d74579da880",
     "packages": [
         {
@@ -1188,7 +1187,6 @@
                 "issues": "https://github.com/filamentphp/filament/issues",
                 "source": "https://github.com/filamentphp/filament"
             },
-<
             "time": "2024-12-31T13:16:04+00:00"
         },
         {
@@ -1254,7 +1252,6 @@
                 "issues": "https://github.com/filamentphp/filament/issues",
                 "source": "https://github.com/filamentphp/filament"
             },
-
             "time": "2024-12-31T13:16:24+00:00"
         },
         {
@@ -1311,7 +1308,6 @@
                 "issues": "https://github.com/filamentphp/filament/issues",
                 "source": "https://github.com/filamentphp/filament"
             },
-
             "time": "2024-12-31T13:16:06+00:00"
         },
         {
@@ -1439,7 +1435,6 @@
                 "illuminate/support": "^10.45|^11.0",
                 "illuminate/view": "^10.45|^11.0",
                 "kirschbaum-development/eloquent-power-joins": "^3.0|^4.0",
-
                 "livewire/livewire": "3.5.12",
                 "php": "^8.1",
                 "ryangjchandler/blade-capture-directive": "^0.2|^0.3|^1.0",
@@ -1475,7 +1470,6 @@
                 "issues": "https://github.com/filamentphp/filament/issues",
                 "source": "https://github.com/filamentphp/filament"
             },
-
             "time": "2024-12-31T13:16:28+00:00"
         },
         {
@@ -1490,7 +1484,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/filamentphp/tables/zipball/e34f63f89ef672f8e810c2e181665d718e84ff37",
                 "reference": "e34f63f89ef672f8e810c2e181665d718e84ff37",
-
                 "shasum": ""
             },
             "require": {
@@ -1529,7 +1522,6 @@
                 "issues": "https://github.com/filamentphp/filament/issues",
                 "source": "https://github.com/filamentphp/filament"
             },
-
             "time": "2024-12-31T13:16:31+00:00"
         },
         {
@@ -1544,7 +1536,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/filamentphp/widgets/zipball/869a419fe42e2cf1b9461f2d1e702e2fcad030ae",
                 "reference": "869a419fe42e2cf1b9461f2d1e702e2fcad030ae",
-
                 "shasum": ""
             },
             "require": {
@@ -1575,9 +1566,7 @@
                 "issues": "https://github.com/filamentphp/filament/issues",
                 "source": "https://github.com/filamentphp/filament"
             },
-
             "time": "2024-12-17T13:03:07+00:00"
-
         },
         {
             "name": "fruitcake/php-cors",
