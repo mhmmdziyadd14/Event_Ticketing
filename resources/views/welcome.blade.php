@@ -223,7 +223,7 @@
                                 <a href="{{ route('events.show', $event) }}" class="bookmark">
                                     <span class="icon-heart"></span>
                                 </a>
-                                <a class="px-3 mb-3 category" href="#">Events</a>
+                                <a class="px-3 mb-3 category" href="{{ route('event') }}">Events</a>
                                 <h2 class="mb-1">
                                     <a href="{{ route('events.show', $event) }}">{{ $event->nama }}</a>
                                 </h2>
