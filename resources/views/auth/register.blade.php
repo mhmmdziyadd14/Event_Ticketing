@@ -57,8 +57,8 @@
                 <div class="mb-3">
                     <label for="role" class="form-label">{{ __('Role') }}</label>
                     <select id="role" name="role" class="form-select">
-                        @foreach ($roles as $role)
-                            <option value="{{ $role->name }}">{{ $role->name }}</option>
+                        @foreach (Spatie\Permission\Models\Role::whereIn('name', ['organizer', 'user'])->get() as $role)
+                            <option value="{{ $role->name }}">{{ ucfirst($role->name) }}</option>
                         @endforeach
                     </select>
                 </div>

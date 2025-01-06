@@ -31,20 +31,18 @@
 
     <link rel="stylesheet" href="css/style.css">
     <style>
-              
-                
         .event-slide img {
             max-height: 300px;
             object-fit: cover;
             border-radius: 10px;
             width: 100%;
         }
-        
+
         .event-description {
             color: #666;
             margin-bottom: 15px;
         }
-        
+
         .event-artists .badge {
             margin-right: 5px;
         }
@@ -70,7 +68,7 @@
                 <div class="row align-items-center">
 
                     <div class="col-11 col-xl-2">
-                        <h1 class="mb-0 site-logo"><a href="index.html" class="text-white h2 mb-0">Ticketer</a></h1>
+                        <h1 class="mb-0 site-logo"><a href="index.html" class="text-white h2 mb-0">Tickfest</a></h1>
                     </div>
 
 
@@ -121,9 +119,9 @@
                     <div class="row justify-content-center mb-4">
                         <div class="col-md-10 text-center">
                             <section id="home">
-                            <h1 data-aos="fade-up">MUSIC FESTIVAL CONCERT</h1>
-                            <p data-aos="fade-up" data-aos-delay="100">Get the Latest Concert Fun</p>
-                        </section>
+                                <h1 data-aos="fade-up">MUSIC FESTIVAL CONCERT</h1>
+                                <p data-aos="fade-up" data-aos-delay="100">Get the Latest Concert Fun</p>
+                            </section>
                         </div>
                     </div>
 
@@ -232,7 +230,7 @@
                 @endforelse
             </div>
         </div>
-    
+
         {{-- Pagination Links --}}
         <div class="container">
             {{-- <div class="row">
@@ -325,11 +323,13 @@
             <div class="row justify-content-center mb-5">
                 <div class="col-md-7 text-center border-primary">
                     <section id="listing">
-                    <h2 class="font-weight-light" style="color: white">How Does It Works</h2>
-                    <p class="color-black-opacity-5" style="color: white">With our platform, you can purchase tickets for your favorite
-                        concerts easily and quickly. From selecting events, adding tickets to the cart, to completing
-                        the payment in just a few simple steps. Enjoy a hassle-free ticket booking experience and
-                        receive your e-ticket directly via email. </p>
+                        <h2 class="font-weight-light" style="color: white">How Does It Works</h2>
+                        <p class="color-black-opacity-5" style="color: white">With our platform, you can purchase
+                            tickets for your favorite
+                            concerts easily and quickly. From selecting events, adding tickets to the cart, to
+                            completing
+                            the payment in just a few simple steps. Enjoy a hassle-free ticket booking experience and
+                            receive your e-ticket directly via email. </p>
                     </section>
                 </div>
             </div>
@@ -337,8 +337,10 @@
                 <div class="col-md-6 mb-4 mb-lg-0 col-lg-4">
                     <div class="how-it-work-step">
                         <div class="img-wrap">
-                            <img src="https://i.pinimg.com/736x/c0/f1/34/c0f13488fe9e402411b1706682a4663b.jpg"
-                                alt="#" class="img-fluid">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                      d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                            </svg>
                         </div>
                         <span class="number">1</span>
                         <h3>Decide Which Event to Attend</h3>
@@ -349,8 +351,10 @@
                 <div class="col-md-6 mb-4 mb-lg-0 col-lg-4">
                     <div class="how-it-work-step">
                         <div class="img-wrap">
-                            <img src="https://i.pinimg.com/736x/c0/f1/34/c0f13488fe9e402411b1706682a4663b.jpg"
-                                alt="#" class="img-fluid">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                      d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                            </svg>
                         </div>
                         <span class="number">2</span>
                         <h3>Add Tickets to Your Cart</h3>
@@ -361,8 +365,10 @@
                 <div class="col-md-6 mb-4 mb-lg-0 col-lg-4">
                     <div class="how-it-work-step">
                         <div class="img-wrap">
-                            <img src="https://i.pinimg.com/736x/c0/f1/34/c0f13488fe9e402411b1706682a4663b.jpg"
-                                alt="#" class="img-fluid">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                      d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                            </svg>
                         </div>
                         <span class="number">3</span>
                         <h3>Checkout and Get Your Tickets</h3>
@@ -388,45 +394,45 @@
                     <div>
                         <div class="testimonial event-slide">
                             <figure class="mb-4">
-                                <img src="{{ $event->foto ? asset('storage/' . $event->foto) : 'https://via.placeholder.com/600x400.png?text=Event+Image' }}" 
-                                     alt="{{ $event->nama }}" class="img-fluid mb-3">
+                                <img src="{{ $event->foto ? asset('storage/' . $event->foto) : 'https://via.placeholder.com/600x400.png?text=Event+Image' }}"
+                                    alt="{{ $event->nama }}" class="img-fluid mb-3">
                                 <p>{{ $event->nama }}</p>
                             </figure>
                             <blockquote>
                                 <div class="row mb-3">
                                     <div class="col-md-4">
-                                        <strong>Venue:</strong> 
+                                        <strong>Venue:</strong>
                                         {{ optional($event->venue)->nama ?? 'Not Specified' }}
                                     </div>
                                     <div class="col-md-4">
-                                        <strong>Date:</strong> 
+                                        <strong>Date:</strong>
                                         {{ \Carbon\Carbon::parse($event->tanggal)->format('d M Y') }}
                                     </div>
                                     <div class="col-md-4">
-                                        <strong>Time:</strong> 
+                                        <strong>Time:</strong>
                                         {{ \Carbon\Carbon::parse($event->tanggal)->format('H:i A') }}
                                     </div>
                                 </div>
-                                
+
                                 <p class="event-description">
                                     {{ Str::limit($event->deskripsi, 150, '...') }}
                                 </p>
-                                
-                                <div class="event-artists mb-2">
+
+                                <div class="event-artists mb-2 ">
                                     <strong>Artists:</strong>
-                                    @if($event->artists && $event->artists->count() > 0)
+                                    @if ($event->artists && $event->artists->count() > 0)
                                         <div class="d-flex gap-2">
-                                            @foreach($event->artists as $artist)
-                                                <span class="badge bg-primary">{{ $artist->nama }}</span>
+                                            @foreach ($event->artists as $artist)
+                                                <span class="badge bg-secondary">{{ $artist->nama }}</span>
                                             @endforeach
                                         </div>
                                     @else
                                         <span class="text-muted">No artists specified</span>
                                     @endif
                                 </div>
-                                
+
                                 <div class="text-center mt-3">
-                                    <a href="{{ route('events.show', $event) }}" class="btn btn-primary btn-sm">
+                                    <a href="{{ route('events.show', $event) }}" class="btn btn-secondary btn-sm">
                                         View Event Details
                                     </a>
                                 </div>
@@ -441,7 +447,7 @@
                     </div>
                 @endforelse
             </div>
-            
+
         </div>
     </div>
 
@@ -452,9 +458,9 @@
             <div class="row justify-content-center mb-5">
                 <div class="col-md-7 text-center border-primary">
                     <section id="artikel">
-                    <h2 class="font-weight-light" style="color: white"> Articles</h2>
-                    <p class="color-black-opacity-5" style="color: white" >See Our articles</p>
-                </section>
+                        <h2 class="font-weight-light" style="color: white"> Articles</h2>
+                        <p class="color-black-opacity-5" style="color: white">See Our articles</p>
+                    </section>
                 </div>
             </div>
             <div class="row mb-3 align-items-stretch">
@@ -463,7 +469,8 @@
                         <img src="https://i.pinimg.com/736x/0b/72/d0/0b72d0e3563d27314e9764a70ae64e4a.jpg"
                             alt="#" class="img-fluid">
                         <div class="h-entry-inner">
-                            <h2 class="font-size-regular" style="color: white">Tips for Music Lovers and Travelers</h2>
+                            <h2 class="font-size-regular" style="color: white">Tips for Music Lovers and Travelers
+                            </h2>
                             <div class="meta mb-4" style="color: white">by BLACKPINK<span
                                     class="mx-2">&bullet;</span> May 5th, 2019</div>
                             <p>After their concert in Jakarta, BLACKPINK expressed deep gratitude to their fans. Jennie,
@@ -479,8 +486,10 @@
                         <img src="https://i.pinimg.com/736x/a9/63/b0/a963b03a956411a18282cf0b5f56c917.jpg"
                             alt="#" class="img-fluid">
                         <div class="h-entry-inner">
-                            <h2 class="font-size-regular" style="color: white">Tips for Music Lovers and Travelers</h2>
-                            <div class="meta mb-4" style="color: white">by Dewa 19<span class="mx-2">&bullet;</span>
+                            <h2 class="font-size-regular" style="color: white">Tips for Music Lovers and Travelers
+                            </h2>
+                            <div class="meta mb-4" style="color: white">by Dewa 19<span
+                                    class="mx-2">&bullet;</span>
                                 Oct 4th, 2023</div>
                             <p>Ahmad Dhani, the lead vocalist of Dewa 19, expressed his pride and gratitude after their
                                 Jakarta concert. "We are so touched by how many people came to watch us. It’s been an
@@ -495,7 +504,8 @@
                         <img src="https://i.pinimg.com/736x/2d/86/cf/2d86cf088eeb46f2ef478802b7aa9d5a.jpg"
                             alt="#" class="img-fluid">
                         <div class="h-entry-inner">
-                            <h2 class="font-size-regular" style="color: white">Tips for Music Lovers and Travelers</h2>
+                            <h2 class="font-size-regular" style="color: white">Tips for Music Lovers and Travelers
+                            </h2>
                             <div class="meta mb-4" style="color: white">by Coldplay<span
                                     class="mx-2">&bullet;</span> june 3th, 2024</div>
                             <p>Chris Martin, the lead singer of Coldplay, shared his joy after the concert in Jakarta.
@@ -519,7 +529,7 @@
                             and Consonantia, there live the blind texts.</p>
                     </div>
                     <div class="col-lg-4 ">
-                        <p class="mb-0"><a href="signup.html"
+                        <p class="mb-0"><a href="/register"
                                 class="btn btn-outline-white btn-md px-5 font-weight-bold btn-md-block text-white">Sign
                                 Up</a></p>
                     </div>
