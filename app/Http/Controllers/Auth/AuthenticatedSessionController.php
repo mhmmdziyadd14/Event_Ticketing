@@ -32,10 +32,14 @@ class AuthenticatedSessionController extends Controller
         }
 
         if (Auth::user()->hasRole('organizer')){
-            return redirect()->to('organizer');
+            return redirect()->to('/organizer');
         }
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        if (Auth::user()->hasRole('user')){
+            return redirect()->to('/user');
+        }
+
+        return redirect()->intended(route('welcome', absolute: false));
     }
 
     /**
