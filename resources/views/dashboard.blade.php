@@ -28,11 +28,8 @@
                     @if(Auth::user()->hasRole('organizer'))
                         <h3 class="mt-6 text-lg font-bold text-gray-800 dark:text-gray-100">Organizer Panel</h3>
                         <ul class="list-disc list-inside text-gray-600 dark:text-gray-400">
-                            <li><a href="/manage-my-events" class="text-blue-500 hover:underline">Kelola Event Saya</a></li>
-                            <li><a href="/create-ticket" class="text-blue-500 hover:underline">Buat Tiket Baru</a></li>
-                            <li><a href="/manage-my-tickets" class="text-blue-500 hover:underline">Kelola Tiket Saya</a></li>
-                            <li><a href="/view-my-transactions" class="text-blue-500 hover:underline">Lihat Transaksi</a></li>
-                        </ul>
+                            <li><a href="/organizer" class="text-blue-500 hover:underline">Buat Event dan Tiket Baru</a></li>
+                            </ul>
                     @endif
 
                     <!-- User Section -->
