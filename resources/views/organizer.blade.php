@@ -138,7 +138,7 @@
 
                     <div class="space-y-4">
                         @forelse ($events as $event)
-                            <div class="bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden flex cursor-pointer event-details mt-2"
+                            <div class="bg-gray-50 web-bg rounded-lg overflow-hidden flex cursor-pointer event-details mt-2"
                                 data-event-id="{{ $event->id }}" style="max-height: 300px;">
                                 <div class="w-24 h-24 flex-shrink-0 overflow-hidden">
                                     <div class="image-container relative w-full h-full rounded-md">
@@ -149,7 +149,7 @@
                                         @else
                                             <div
                                                 class="w-full h-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-                                                <span class="text-gray-500 dark:text-gray-400">No Image</span>
+                                                <span class="text-gray-500 card-bg dark:text-gray-400">No Image</span>
                                             </div>
                                         @endif
                                     </div>
@@ -249,7 +249,7 @@
                     'relative');
                 newArtistGroup.innerHTML = `
                     <select name="artists[]" 
-                        class="mt-1 block w-full artist-select rounded-md dark:bg-gray-700 dark:text-gray-300">
+                        class="mt-6 block w-full artist-select rounded-md web-bg dark:text-gray-300">
                         <option value="">Select an Artist</option>
                         @foreach ($artists as $artist)
                             <option value="{{ $artist->id }}">{{ $artist->nama }}</option>
@@ -288,28 +288,28 @@
                 const newTicket = document.createElement('div');
                 newTicket.classList.add('ticket-item', 'space-y-4', 'relative');
                 newTicket.innerHTML = `
-                    <div>
+                    <div class="mt-6">
                         <x-input-label for="ticket_nama[]" :value="__('Ticket Name')" />
                         <x-text-input name="ticket_nama[]" type="text" 
-                            class="ticket-name mt-1 block w-full rounded-md dark:bg-gray-700 dark:text-gray-300" 
+                            class="ticket-name mt-1 block w-full rounded-md web-bg dark:text-gray-300" 
                             required />
                     </div>
                     <div>
                         <x-input-label for="ticket_harga[]" :value="__('Ticket Price')" />
                         <x-text-input name="ticket_harga[]" type="number" 
-                            class="mt-1 block w-full rounded-md dark:bg-gray-700 dark:text-gray-300" 
+                            class="mt-1 block w-full rounded-md web-bg dark:text-gray-300" 
                             required />
                     </div>
                     <div>
                         <x-input-label for="ticket_stok[]" :value="__('Ticket Stock')" />
                         <x-text-input name="ticket_stok[]" type="number" 
-                            class="mt-1 block w-full rounded-md dark:bg-gray-700 dark:text-gray-300" 
+                            class="mt-1 block w-full rounded-md web-bg dark:text-gray-300" 
                             required />
                     </div>
                     <div>
                         <x-input-label for="ticket_type[]" :value="__('Ticket Type')" />
                         <select name="ticket_type[]" 
-                            class="mt-1 block w-full rounded-md dark:bg-gray-700 dark:text-gray-300" 
+                            class="mt-1 block w-full rounded-md web-bg dark:text-gray-300" 
                             required>
                             <option value="reguler">Regular</option>
                             <option value="vip">VIP</option>
