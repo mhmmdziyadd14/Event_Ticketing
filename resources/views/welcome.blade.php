@@ -112,86 +112,8 @@
                         </div>
                     </div>
 
-                    <div class="form-search-wrap p-2" data-aos="fade-up" data-aos-delay="200"
-                        style="border-radius: 50px">
-                        <form method="post">
-                            <div class="row align-items-center">
-                                <div class="col-lg-12 col-xl-4 no-sm-border border-right">
-                                    <input type="text" class="form-control"
-                                        placeholder="What are you looking for?">
-                                </div>
-                                <div class="col-lg-12 col-xl-3 no-sm-border border-right">
-                                    <div class="wrap-icon">
-                                        <span class="icon icon-room"></span>
-                                        <input type="text" class="form-control" placeholder="Location">
-                                    </div>
-
-                                </div>
-                                <div class="col-lg-12 col-xl-3">
-                                    <div class="select-wrap">
-                                        <span class="icon"><span class="icon-keyboard_arrow_down"></span></span>
-                                        <select class="form-control" name="" id="">
-                                            <option value="">Events 1</option>
-                                            <option value="">Events 2</option>
-                                            <option value="">Events 3</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 col-xl-2 ml-auto text-right">
-                                    <input type="submit" class="btn text-white" style="background-color: #17001f"
-                                        value="Search">
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+            {{-- vbnm --}}
                 </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="site-section">
-        <div class="container">
-            <div class="row justify-content-center mb-5">
-                <div class="col-md-7 text-center border-primary">
-                    <h2 class="font-weight-light" style="color: rgb(248, 248, 251)">Popular Categories</h2>
-                    <p class="color-black-opacity-5" style="color: white">These multi-day events offer a diverse lineup of artists across multiple stages, often incorporating camping and other recreational activities. Popular genres include rock, electronic, country, and indie music</p>
-                </div>
-            </div>
-
-            <div class="row align-items-stretch justify-content-center">
-
-                <div class="col-6 col-sm-6 col-md-4 mb-4 mb-lg-0 col-lg-2">
-                    <a href="#" class="popular-category h-100">
-                        <span class="icon mb-3"></span>
-                        <span class="caption mb-2 d-block">Events 1</span>
-                        <span class="number" style="background-color: rgb(77, 17, 168);color: white">482</span>
-                    </a>
-                </div>
-                <div class="col-6 col-sm-6 col-md-4 mb-4 mb-lg-0 col-lg-2">
-                    <a href="#" class="popular-category h-100">
-                        <span class="icon mb-3"></span>
-                        <span class="caption mb-2 d-block">Events 2</span>
-                        <span class="number" style="background-color: rgb(77, 17, 168);color: white">482</span>
-                    </a>
-                </div>
-                <div class="col-6 col-sm-6 col-md-4 mb-4 mb-lg-0 col-lg-2">
-                    <a href="#" class="popular-category h-100">
-                        <span class="icon mb-3"></span>
-                        <span class="caption mb-2 d-block">Events 3</span>
-                        <span class="number" style="background-color: rgb(77, 17, 168);color: white">482</span>
-                    </a>
-                </div>
-
-
-
-
-            </div>
-
-            <div class="row mt-5 justify-content-center tex-center">
-                <div class="col-md-4"><a href="#" class="btn btn-block btn-md px-5"
-                        style="background-color: #17001f;color: white">View
-                        All Categories</a></div>
             </div>
         </div>
     </div>
@@ -199,6 +121,38 @@
 
     <div class="site-section" data-aos="fade">
         <div class="container">
+            <div class="form-search-wrap p-2" data-aos="fade-up" data-aos-delay="200"
+            style="border-radius: 50px">
+            <form method="post">
+                <div class="row align-items-center">
+                    <div class="col-lg-12 col-xl-4 no-sm-border border-right">
+                        <input type="text" class="form-control"
+                            placeholder="What are you looking for?">
+                    </div>
+                    <div class="col-lg-12 col-xl-3 no-sm-border border-right">
+                        <div class="wrap-icon">
+                            <span class="icon icon-room"></span>
+                            <input type="text" class="form-control" placeholder="Location">
+                        </div>
+
+                    </div>
+                    <div class="col-lg-12 col-xl-3">
+                        <div class="select-wrap">
+                            <span class="icon"><span class="icon-keyboard_arrow_down"></span></span>
+                            <select class="form-control" name="" id="">
+                                <option value="">Events 1</option>
+                                <option value="">Events 2</option>
+                                <option value="">Events 3</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-xl-2 ml-auto text-right">
+                        <input type="submit" class="btn text-white" style="background-color: #17001f"
+                            value="Search">
+                    </div>
+                </div>
+            </form>
+        </div>
             <div class="row justify-content-center mb-5">
                 <div class="col-md-7 text-center border-primary">
                     <h2 class="font-weight-light" style="color: rgb(255, 255, 255)">Upcoming Events</h2>
