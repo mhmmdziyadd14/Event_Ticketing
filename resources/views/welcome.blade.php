@@ -77,37 +77,20 @@
                     <div class="col-12 col-md-10 d-none d-xl-block">
                         <nav class="site-navigation position-relative text-right" role="navigation">
                             <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-                                <li style="margin-right: 20px" class="active"><a href="index.html"><span>Home</span></a>
+                                <li style="margin-right: 20px" class="active"><a href="#home"><span>Home</span></a>
                                 </li>
-                                <li style="margin-right: 20px" class="has-children">
-                                    <a href="about.html"><span>Dropdown</span></a>
-                                    <ul class="dropdown arrow-top">
-                                        <li><a href="#">Menu One</a></li>
-                                        <li><a href="#">Menu Two</a></li>
-                                        <li><a href="#">Menu Three</a></li>
-                                        <li class="has-children">
-                                            <a href="#">Dropdown</a>
-                                            <ul class="dropdown">
-                                                <li><a href="#">Menu One</a></li>
-                                                <li><a href="#">Menu Two</a></li>
-                                                <li><a href="#">Menu Three</a></li>
-                                                <li><a href="#">Menu Four</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li style="margin-right: 20px"><a href="listings.html"><span>Listings</span></a></li>
-                                <li style="margin-right: 20px"><a href="about.html"><span>About</span></a></li>
+                                <li style="margin-right: 20px"><a href="#listing"><span>Listings</span></a></li>
+                                <li style="margin-right: 20px"><a href="#artikel"><span>Articles</span></a></li>
                                 @if (Route::has('login'))
                                     @auth
                                         <a href="{{ url('/dashboard') }}" class="btn btn-outline-dark me-2"
-                                            style="border-radius: 20px; background-color: blue; color: white">Dasbor</a>
+                                            style="border-radius: 20px; background-color: #17001f; color: white">Dasbor</a>
                                     @else
                                         <a href="{{ route('login') }}" class="btn btn-outline-dark me-2"
-                                            style="border-radius: 20px; background-color: blue; color: white">Login</a>
+                                            style="border-radius: 20px; background-color: #17001f; color: white">Login</a>
                                         @if (Route::has('register'))
                                             <a href="{{ route('register') }}" class="btn btn-dark"
-                                                style="border-radius: 20px; background-color: blue; color: white">Register</a>
+                                                style="border-radius: 20px; background-color: #17001f; color: white">Register</a>
                                         @endif
                                     @endauth
                                 @endif
@@ -137,8 +120,10 @@
                 <div class="col-md-10">
                     <div class="row justify-content-center mb-4">
                         <div class="col-md-10 text-center">
+                            <section id="home">
                             <h1 data-aos="fade-up">MUSIC FESTIVAL CONCERT</h1>
                             <p data-aos="fade-up" data-aos-delay="100">Get the Latest Concert Fun</p>
+                        </section>
                         </div>
                     </div>
 
@@ -179,7 +164,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-xl-2 ml-auto text-right">
-                                    <input type="submit" class="btn text-white" style="background-color: blue"
+                                    <input type="submit" class="btn text-white" style="background-color: #17001f"
                                         value="Search">
                                 </div>
                             </div>
@@ -193,14 +178,14 @@
         <div class="container">
             <div class="row justify-content-center mb-5">
                 <div class="col-md-7 text-center border-primary">
-                    <h2 class="font-weight-light" style="color: blue">Upcoming Events</h2>
+                    <h2 class="font-weight-light" style="color:white">Upcoming Events</h2>
                     <p class="color-black-opacity-5">Explore our exciting events!</p>
                 </div>
             </div>
             <div class="row align-items-center justify-content-center text-center">
                 <div class="col-md-10">
                     <div class="row justify-content-center mb-4">
-                        <div class="col-md-10 text-center">
+                        <div class="col-md-10 text-center text-white">
                             <h1 data-aos="fade-up">MUSIC FESTIVAL CONCERT</h1>
                             <p data-aos="fade-up" data-aos-delay="100">Get the Latest Concert Fun</p>
                         </div>
@@ -270,7 +255,7 @@
                         class="img-fluid rounded">
                 </div>
                 <div class="col-md-5 ml-auto">
-                    <h2 class="mb-3" style="color: blue">Why Us</h2>
+                    <h2 class="mb-3" style="color: white">Why Us</h2>
                     <div class="row mt-4">
                         <div class="col-12">
                             <div class="border p-3 rounded mb-2">
@@ -339,11 +324,13 @@
         <div class="container">
             <div class="row justify-content-center mb-5">
                 <div class="col-md-7 text-center border-primary">
-                    <h2 class="font-weight-light" style="color: blue">How Does It Works</h2>
+                    <section id="listing">
+                    <h2 class="font-weight-light" style="color: white">How Does It Works</h2>
                     <p class="color-black-opacity-5">With our platform, you can purchase tickets for your favorite
                         concerts easily and quickly. From selecting events, adding tickets to the cart, to completing
                         the payment in just a few simple steps. Enjoy a hassle-free ticket booking experience and
                         receive your e-ticket directly via email. </p>
+                    </section>
                 </div>
             </div>
             <div class="row">
@@ -392,7 +379,7 @@
 
             <div class="row justify-content-center mb-5">
                 <div class="col-md-7 text-center border-primary">
-                    <h2 class="font-weight-light" style="color: blue">Popular Event</h2>
+                    <h2 class="font-weight-light" style="color:white">Popular Event</h2>
                 </div>
             </div>
 
@@ -464,8 +451,10 @@
         <div class="container">
             <div class="row justify-content-center mb-5">
                 <div class="col-md-7 text-center border-primary">
-                    <h2 class="font-weight-light" style="color: blue"> Articles</h2>
+                    <section id="artikel">
+                    <h2 class="font-weight-light" style="color: white"> Articles</h2>
                     <p class="color-black-opacity-5">See Our articles</p>
+                </section>
                 </div>
             </div>
             <div class="row mb-3 align-items-stretch">
@@ -474,8 +463,8 @@
                         <img src="https://i.pinimg.com/736x/0b/72/d0/0b72d0e3563d27314e9764a70ae64e4a.jpg"
                             alt="#" class="img-fluid">
                         <div class="h-entry-inner">
-                            <h2 class="font-size-regular" style="color: blue">Tips for Music Lovers and Travelers</h2>
-                            <div class="meta mb-4" style="color: blue">by BLACKPINK<span
+                            <h2 class="font-size-regular" style="color: white">Tips for Music Lovers and Travelers</h2>
+                            <div class="meta mb-4" style="color: white">by BLACKPINK<span
                                     class="mx-2">&bullet;</span> May 5th, 2019</div>
                             <p>After their concert in Jakarta, BLACKPINK expressed deep gratitude to their fans. Jennie,
                                 one of the members, said, "We are so happy to be back in Jakarta and feel the incredible
@@ -490,8 +479,8 @@
                         <img src="https://i.pinimg.com/736x/a9/63/b0/a963b03a956411a18282cf0b5f56c917.jpg"
                             alt="#" class="img-fluid">
                         <div class="h-entry-inner">
-                            <h2 class="font-size-regular" style="color: blue">Tips for Music Lovers and Travelers</h2>
-                            <div class="meta mb-4" style="color: blue">by Dewa 19<span class="mx-2">&bullet;</span>
+                            <h2 class="font-size-regular" style="color: white">Tips for Music Lovers and Travelers</h2>
+                            <div class="meta mb-4" style="color: white">by Dewa 19<span class="mx-2">&bullet;</span>
                                 Oct 4th, 2023</div>
                             <p>Ahmad Dhani, the lead vocalist of Dewa 19, expressed his pride and gratitude after their
                                 Jakarta concert. "We are so touched by how many people came to watch us. It’s been an
@@ -506,8 +495,8 @@
                         <img src="https://i.pinimg.com/736x/2d/86/cf/2d86cf088eeb46f2ef478802b7aa9d5a.jpg"
                             alt="#" class="img-fluid">
                         <div class="h-entry-inner">
-                            <h2 class="font-size-regular" style="color: blue">Tips for Music Lovers and Travelers</h2>
-                            <div class="meta mb-4" style="color: blue">by Coldplay<span
+                            <h2 class="font-size-regular" style="color: white">Tips for Music Lovers and Travelers</h2>
+                            <div class="meta mb-4" style="color: white">by Coldplay<span
                                     class="mx-2">&bullet;</span> june 3th, 2024</div>
                             <p>Chris Martin, the lead singer of Coldplay, shared his joy after the concert in Jakarta.
                                 "Indonesia, you are incredible! We feel so blessed to perform here. The energy you gave
@@ -520,7 +509,7 @@
         </div>
 
 
-        <div class="py-5" style="background-color: blue">
+        <div class="py-5" style="background-color: #17001f">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-7 mr-auto mb-4 mb-lg-0">
@@ -589,7 +578,7 @@
                                 <input type="text" class="form-control bg-transparent" placeholder="Enter Email"
                                     aria-label="Enter Email" aria-describedby="button-addon2">
                                 <div class="input-group-append">
-                                    <button class="btn text-white" style="background-color: blue" type="button"
+                                    <button class="btn text-white" style="background-color: #17001f" type="button"
                                         id="button-addon2">Send</button>
                                 </div>
                             </div>
