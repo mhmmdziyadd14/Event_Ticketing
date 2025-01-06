@@ -179,7 +179,7 @@
             <div class="row justify-content-center mb-5">
                 <div class="col-md-7 text-center border-primary">
                     <h2 class="font-weight-light" style="color:white">Upcoming Events</h2>
-                    <p class="color-black-opacity-5">Explore our exciting events!</p>
+                    <p class="color-black-opacity-5" style="color: white">Explore our exciting events!</p>
                 </div>
             </div>
             <div class="row align-items-center justify-content-center text-center">
@@ -326,7 +326,7 @@
                 <div class="col-md-7 text-center border-primary">
                     <section id="listing">
                     <h2 class="font-weight-light" style="color: white">How Does It Works</h2>
-                    <p class="color-black-opacity-5">With our platform, you can purchase tickets for your favorite
+                    <p class="color-black-opacity-5" style="color: white">With our platform, you can purchase tickets for your favorite
                         concerts easily and quickly. From selecting events, adding tickets to the cart, to completing
                         the payment in just a few simple steps. Enjoy a hassle-free ticket booking experience and
                         receive your e-ticket directly via email. </p>
@@ -453,7 +453,7 @@
                 <div class="col-md-7 text-center border-primary">
                     <section id="artikel">
                     <h2 class="font-weight-light" style="color: white"> Articles</h2>
-                    <p class="color-black-opacity-5">See Our articles</p>
+                    <p class="color-black-opacity-5" style="color: white" >See Our articles</p>
                 </section>
                 </div>
             </div>
@@ -589,9 +589,7 @@
                     <div class="col-12 text-md-center text-left">
                         <p>
                             <!-- Link back to Free-Template.co can't be removed. Template is licensed under CC BY 3.0. -->
-                            &copy; 2019 <strong class="text-black">Browse</strong> Lorem ipsum dolor sit, amet
-                            consectetur
-                            adipisicing elit. Consequatur, quis!
+                            &copy; 2025 <strong class="text-white">Browse</strong> KElompok E4
                         </p>
                     </div>
                 </div>
