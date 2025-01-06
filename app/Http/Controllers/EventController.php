@@ -279,11 +279,22 @@
      /**
       * Get artists for a specific event
       */
-     public function getEventArtists(Event $event)
-     {
-         $artists = $event->artists;
-         return response()->json($artists);
-     }
+      public function getEventArtists(Event $event)
+      {
+          // Eager load artists to prevent N+1 query
+          $event->load('artists');
+      
+          // Transform artists to include only necessary information
+          $artists = $event->artists->map(function ($artist) {
+              return [
+                  'id' => $artist->id,
+                  'nama' => $artist->nama,
+                  // Add any other artist details you want to send
+              ];
+          });
+      
+          return response()->json($artists);
+      }
 
 
 

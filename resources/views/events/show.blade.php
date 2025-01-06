@@ -115,7 +115,7 @@
                     @if($event->artists && $event->artists->count() > 0)
                         <div class="d-flex justify-content-center gap-3">
                             @foreach($event->artists as $artist)
-                                <span class="badge bg-success">{{ $artist->nama }}</span>
+                                <span class="badge bg-secondary">{{ $artist->nama }}</span>
                             @endforeach
                         </div>
                     @else
@@ -126,8 +126,8 @@
                 <div class="row mt-4">
                     <div class="col-md-10 offset-md-1">
                         <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title text-light mb-4">Ticket Options</h5>
+                            <div class="card-body  shadow-lg">
+                                <h5 class="card-title text-light mb-4 ">Ticket Options</h5>
                                 <div class="table-responsive">
                                     <table class="table table-dark table-striped">
                                         <thead>
@@ -142,13 +142,13 @@
                                             @forelse($event->tickets as $ticket)
                                                 <tr>
                                                     <td>
-                                                        <span class="badge badge-ticket badge-{{ strtolower($ticket->type) }}">
+                                                        <span class="badge badge-ticket bg-secondary badge-{{ strtolower($ticket->type) }}">
                                                             {{ ucfirst($ticket->type) }}
                                                         </span>
                                                     </td>
                                                     <td>Rp {{ number_format($ticket->harga, 0, ',', '.') }}</td>
                                                     <td>
-                                                        <span class="badge bg-info">
+                                                        <span class="badge bg-secondary">
                                                             {{ $ticket->stok }} Tickets
                                                         </span>
                                                     </td>
@@ -159,17 +159,17 @@
                                                                     @csrf
                                                                     <input type="hidden" name="ticket_id" value="{{ $ticket->id }}">
                                                                     <input type="hidden" name="event_id" value="{{ $event->id }}">
-                                                                    <button type="submit" class="btn btn-info btn-sm">
+                                                                    <button type="submit" class="btn btn-secondary btn-sm">
                                                                         Buy Ticket
                                                                     </button>
                                                                 </form>
                                                             @else
-                                                                <a href="{{ route('login') }}" class="btn btn-info btn-sm">
+                                                                <a href="{{ route('login') }}" class="btn btn-secondary btn-sm">
                                                                     Login to Buy
                                                                 </a>
                                                             @endif
                                                         @else
-                                                            <a href="{{ route('login') }}" class="btn btn-info btn-sm">
+                                                            <a href="{{ route('login') }}" class="btn btn-secondary btn-sm">
                                                  Login to Buy
                                                             </a>
                                                         @endauth
@@ -183,7 +183,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <a href="{{ route('welcome') }}" class="btn btn-info mb-3">
+                                <a href="{{ route('welcome') }}" class="btn btn-secondary mb-3">
                                     <i class="fas fa-arrow-left me-2"></i>Back to Events
                                 </a>
                             </div>

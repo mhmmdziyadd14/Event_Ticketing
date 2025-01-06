@@ -1,10 +1,21 @@
 <x-app-layout>
+    <style>
+        .web-bg {
+            background-color: rgb(14, 1, 17);
+            color: white;
+        }
+
+        .card-hd {
+            background-color: #17001f;
+            color: white;
+        }
+    </style>
     <div class="container mx-auto px-4 py-6">
 
         <div class="grid grid-cols-5 gap-4">
             <!-- Cart Section -->
             <div class="grid grid-cols-2 gap-4">
-                <div class="col-span-1 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md p-4 flex flex-col">
+                <div class="col-span-1 card-hd rounded-lg shadow-md p-4 flex flex-col">
                     <h5 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Your Cart</h5>
                     <div id="cart-items" class="space-y-2 text-center text-gray-500 dark:text-gray-400">
                         <p>Your cart is empty</p>
@@ -15,18 +26,18 @@
                             <strong id="cart-total" class="text-gray-900 dark:text-gray-100">IDR 0</strong>
                         </div>
                         <button id="checkout-btn" disabled
-                            class="w-full px-4 py-2 bg-gray-800 dark:bg-gray-700 text-white rounded-md hover:bg-gray-700 dark:hover:bg-gray-600 transition ease-in-out duration-150">
+                            class="w-full px-4 py-2 web-bg text-white rounded-md hover:bg-gray-700 dark:hover:bg-gray-600 transition ease-in-out duration-150">
                             Check Out
                         </button>
                     </div>
                 </div>
-                <div class="col-span-1 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md p-4 flex flex-col">
+                <div class="col-span-1 card-hd rounded-lg shadow-md p-4 flex flex-col">
                     <h5 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Transaction History</h5>
                     @if ($transactions->isEmpty())
                         <p class="text-gray-500 dark:text-gray-400">No transactions found.</p>
                     @else
                         <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                            <thead class="bg-gray-50 dark:bg-gray-700">
+                            <thead class="web-bg">
                                 <tr>
                                     <th
                                         class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
@@ -45,7 +56,7 @@
                                         Date</th>
                                 </tr>
                             </thead>
-                            <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                            <tbody class="bg-white web-bg divide-y divide-gray-200 dark:divide-gray-700">
                                 @foreach ($transactions as $transaction)
                                     <tr>
                                         <td
@@ -73,13 +84,13 @@
             </div>
 
             <!-- Events and Tickets Section -->
-            <div class="col-span-4 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md p-4">
+            <div class="col-span-4 card-hd rounded-lg shadow-md p-4">
                 <!-- Search and Filter -->
                 <form class="mb-6 flex space-x-2" method="GET" action="{{ route('user') }}">
                     <input type="search" name="search" placeholder="Search Event" value="{{ request('search') }}"
-                        class="w-full pl-10 pr-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        class="w-full pl-10 pr-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 web-bg text-gray-900 dark:text-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                     <select name="venue_id"
-                        class="rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-300 focus:ring-2 focus:ring-blue-500">
+                        class="rounded-md border border-gray-300 dark:border-gray-600 web-bg text-gray-900 dark:text-gray-300 focus:ring-2 focus:ring-blue-500">
                         <option value="">All Venues</option>
                         @foreach ($venues as $venue)
                             <option value="{{ $venue->id }}"
@@ -89,7 +100,7 @@
                         @endforeach
                     </select>
                     <select name="artist_id"
-                        class="rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-300 focus:ring-2 focus:ring-blue-500">
+                        class="rounded-md border border-gray-300 dark:border-gray-600 web-bg text-gray-900 dark:text-gray-300 focus:ring-2 focus:ring-blue-500">
                         <option value="">All Artists</option>
                         @foreach ($artists as $artist)
                             <option value="{{ $artist->id }}"
@@ -98,11 +109,11 @@
                         @endforeach
                     </select>
                     <button type="submit"
-                        class="px-4 py-2 bg-gray-800 dark:bg-gray-700 text-white rounded-md hover:bg-gray-700 dark:hover:bg-gray-600">
+                        class="px-4 py-2 web-bg text-white rounded-md hover:bg-gray-700 dark:hover:bg-gray-600">
                         Search
                     </button>
                     <a href="{{ route('user') }}"
-                        class="px-4 py-2 bg-gray-200 dark:bg-gray-600 text-gray-800 dark:text-gray-300 rounded-md hover:bg-gray-300 dark:hover:bg-gray-500">
+                        class="px-4 py-2 web-bg text-gray-800 dark:text-gray-300 rounded-md hover:bg-gray-300 dark:hover:bg-gray-500">
                         Reset
                     </a>
                 </form>
@@ -138,7 +149,7 @@
                 <!-- Events Grid -->
                 <div class="grid grid-cols-3 gap-4">
                     @forelse($events as $event)
-                        <div class="bg-white dark:bg-gray-700 rounded-lg shadow-md overflow-hidden event-card"
+                        <div class="bg-white mt-3 web-bg rounded-lg shadow-md overflow-hidden event-card"
                             data-event-id="{{ $event->id }}">
                             @if ($event->foto)
                                 <div class="w-full h-48 flex items-center justify-center overflow-hidden">
@@ -196,7 +207,7 @@
                                 <!-- Ticket Section -->
                                 <div class="space-y-2">
                                     @foreach ($event->tickets as $ticket)
-                                        <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3 border border-gray-200 dark:border-gray-600
+                                        <div class="card-hd rounded-lg p-3 border border-gray-200 dark:border-gray-600
                                             {{ $ticket->stok <= 0 ? 'opacity-50' : '' }}"
                                             data-ticket-type="{{ $ticket->type }}"
                                             data-ticket-status="{{ $ticket->status }}">
@@ -219,15 +230,15 @@
                                                 <div class="flex items-center space-x-2">
                                                     @if ($ticket->stok > 0)
                                                         <button
-                                                            class="decrease-ticket bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-md px-2 py-1
+                                                            class="decrease-ticket web-bg text-gray-700 dark:text-gray-300 rounded-md px-2 py-1
                                                             {{ $ticket->stok <= 0 ? 'cursor-not-allowed opacity-50' : '' }}"
                                                             data-ticket-id="{{ $ticket->id }}"
                                                             data-event-id="{{ $event->id }}"
                                                             {{ $ticket->stok <= 0 ? 'disabled' : '' }}>-</button>
-                                                        <span class="ticket-quantity text-gray-800 dark:text-gray-200"
+                                                        <span class="ticket-quantity ms-1 me-1 text-gray-800 dark:text-gray-200"
                                                             data-ticket-id="{{ $ticket->id }}">0</span>
                                                         <button
-                                                            class="increase-ticket bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-md px-2 py-1
+                                                            class="increase-ticket web-bg text-gray-700 dark:text-gray-300 rounded-md px-2 py-1
                                                             {{ $ticket->stok <= 0 ? 'cursor-not-allowed opacity-50' : '' }}"
                                                             data-ticket-id="{{ $ticket->id }}"
                                                             data-event-id="{{ $event->id }}"
@@ -253,10 +264,11 @@
                 </div>
 
                 <!-- Pagination -->
-                <div class="mt-6">
+                <div class="mt-6 ">
                     {{ $events->appends(request()->query())->links() }}
                 </div>
             </div>
+            
         </div>
 
 

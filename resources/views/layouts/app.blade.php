@@ -10,27 +10,49 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
+        <style>
+            .web-bg {
+                background-color: rgb(14, 1, 17);
+                color: white;
+            }
+    
+            .card-hd {
+                background-color: #17001f;
+                color: white;
+            }
+        </style>
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <style>
+            .web-bg {
+                background-color: rgb(14, 1, 17);
+                color: white;
+            }
+    
+            .card-hd {
+                background-color: #17001f;
+                color: white;
+            }
+        </style>
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+        <div class="min-h-screen bg-gray-100 web-bg ">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
             @isset($header)
-                <header class="bg-white dark:bg-gray-800 shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                <header class="card-hd shadow ">
+                    <div class="max-w-7xl web-bg mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>
                 </header>
             @endisset
 
             <!-- Page Content -->
-            <main>
+            <main class="">
                 {{ $slot }}
             </main>
+            
         </div>
     </body>
 </html>

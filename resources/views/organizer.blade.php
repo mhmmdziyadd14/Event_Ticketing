@@ -20,6 +20,7 @@
 
                     <form id="eventForm" action="{{ route('events.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        <input type="hidden" name="event_id" id="event-id-input">
                         <div class="space-y-4">
                             <div>
                                 <x-input-label for="nama" :value="__('Event Name')" />
@@ -138,8 +139,8 @@
 
                     <div class="space-y-4">
                         @forelse ($events as $event)
-                            <div class="bg-gray-50 web-bg rounded-lg overflow-hidden flex cursor-pointer event-details mt-2"
-                                data-event-id="{{ $event->id }}" style="max-height: 300px;">
+                            <div class="bg-gray-50 web-bg rounded-lg overflow-hidden flex mt-2"
+                                style="max-height: 300px;">
                                 <div class="w-24 h-24 flex-shrink-0 overflow-hidden">
                                     <div class="image-container relative w-full h-full rounded-md">
                                         @if ($event->foto)
@@ -157,13 +158,32 @@
                                 <div class="p-4 flex-grow">
                                     <h4 class="font-bold text-sm">{{ $event->nama }}</h4>
                                     <p class="text-sm text-gray-600">
-                                        {{ \Carbon\Carbon::parse($event->tanggal)->format('d M Y') }}</p>
+                                        {{ \Carbon\Carbon::parse($event->tanggal)->format('d M Y') }}
+                                    </p>
+                                </div>
+                                <div class="flex flex-col justify-center p-2">
+                                    {{-- Edit Event Button --}}
+                                   
+
+                                    {{-- Delete Event Button --}}
+                                    <form action="{{ route('events.destroy', $event->id) }}" method="POST"
+                                        onsubmit="return confirm('Are you sure you want to delete this event?');"
+                                        class="inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                            class="px-2 py-1 bg-red-500 text-white rounded text-xs w-full">
+                                            Delete
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         @empty
                             <p class="text-center text-gray-600 dark:text-gray-400">No events created yet.</p>
                         @endforelse
                     </div>
+
+
 
                     {{-- Pagination --}}
                     <div class="mt-4">
@@ -216,7 +236,6 @@
             </div>
         </div>
     </div>
-
     {{-- Javascript --}}
     <script>
         document.addEventListener('DOMContentLoaded', function() {
