@@ -164,12 +164,12 @@
                                                                     </button>
                                                                 </form>
                                                             @else
-                                                                <a href="{{ route('login') }}" class="btn btn-secondary btn-sm">
+                                                                <a href="{{ route('login') }}" class="btn btn-secondary  btn-sm">
                                                                     Login to Buy
                                                                 </a>
                                                             @endif
                                                         @else
-                                                            <a href="{{ route('login') }}" class="btn btn-secondary btn-sm">
+                                                            <a href="{{ route('login') }}" class="btn btn-secondary  btn-sm">
                                                  Login to Buy
                                                             </a>
                                                         @endauth
